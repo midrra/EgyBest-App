@@ -1,0 +1,58 @@
+@import "../../globalStyle/globalStyle.scss";
+
+%innerContain {
+  display: flex;
+  position: relative;
+
+  .move {
+    margin-left: 10px;
+  }
+}
+
+.container {
+  padding: 10px;
+  background-color: #fff;
+  height: 100%;
+
+  .head {
+    display: flex;
+    justify-content: center;
+
+    .content {
+      display: flex;
+      width: 553px;
+      justify-content: space-between;
+      cursor: pointer;
+
+      .inner {
+        @extend %innerContain;
+        color: $main-color;
+
+        &::before {
+          content: "";
+          width: 100%;
+          height: 2px;
+          position: absolute;
+          left: 0;
+          bottom: -18px;
+          background-color: $main-color;
+        }
+      }
+
+      .unInner {
+        @extend %innerContain;
+      }
+    }
+  }
+
+  .man {
+    color: orange;
+    .change {
+      color: green;
+
+      .info-container {
+        background-color: peru;
+      }
+    }
+  }
+}

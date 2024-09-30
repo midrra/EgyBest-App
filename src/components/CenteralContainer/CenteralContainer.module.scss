@@ -1,0 +1,13 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.container {
+  position: absolute;
+  top: 165px;
+  right: 180px;
+  width: 835px;
+
+  .innerContent {
+    margin: 0 10px;
+    border-radius: $radius;
+  }
+}

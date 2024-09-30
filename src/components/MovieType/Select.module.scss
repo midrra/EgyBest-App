@@ -1,0 +1,21 @@
+@import "../../globalStyle/globalStyle.scss";
+
+%haverChange {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: $second-color;
+
+  h6 {
+    margin-right: 10px;
+  }
+}
+
+.active {
+  color: $main-color;
+  @extend %haverChange;
+}
+
+.title {
+  @extend %haverChange;
+}

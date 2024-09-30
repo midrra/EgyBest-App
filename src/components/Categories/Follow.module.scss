@@ -1,0 +1,62 @@
+@import "../../globalStyle/globalStyle.scss";
+
+%general {
+  height: 27px;
+  width: 27px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+}
+@mixin shocial($color) {
+  @extend %general;
+  background-color: $color;
+}
+%flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.follow {
+  text-align: center;
+  margin: 5px;
+  width: 298px;
+  height: 138px;
+  padding: 10px 0;
+  background: #fff;
+  border-radius: $radius;
+  font-weight: bold;
+
+  h1 {
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+
+    .innerContent {
+      width: 50%;
+
+      .fol-fa {
+        margin-bottom: 8px;
+        color: $second-color;
+        @extend %flex;
+
+        .fol-facebook {
+          @include shocial($second-color);
+        }
+      }
+
+      .fol-twi {
+        color: $second-color;
+        @extend %flex;
+
+        .fol-twitter {
+          @include shocial($twitter-color);
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

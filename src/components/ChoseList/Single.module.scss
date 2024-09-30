@@ -1,0 +1,34 @@
+@import "../../globalStyle/globalStyle.scss";
+
+%container {
+  display: flex;
+  padding: 8px 5px 8px 0;
+  border-bottom: 1px solid #ada8a859;
+  color: $second-color;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    color: $main-color;
+  }
+
+  li {
+    margin-right: 5px;
+  }
+}
+.content {
+  @extend %container;
+}
+
+.underContent {
+  @extend %container;
+  border-bottom: 2px solid $main-color;
+  color: $main-color;
+}
+
+#def-fi {
+  &:first-child {
+    border-bottom: 2px solid $main-color;
+    color: $main-color;
+  }
+}

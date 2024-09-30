@@ -1,0 +1,78 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.container {
+  position: relative;
+  height: 337px;
+  background-color: #fff;
+  border-radius: $radius;
+  margin-bottom: 10px;
+  overflow: hidden;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 47px;
+    padding: 0 10px;
+    border-bottom: 1px solid $line;
+
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .inner {
+      color: $second-color;
+      font-weight: 400;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: black;
+      }
+
+      .arrow {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  .info-container {
+    display: flex;
+    margin-top: 20px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: $radius;
+    width: 40px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: $second-color;
+    box-shadow: 1px 0px 2px 0px #a9a1a1;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background-color: #fff;
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    .keyboard {
+      font-size: 50px;
+    }
+  }
+}

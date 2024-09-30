@@ -1,0 +1,15 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.container {
+  position: absolute;
+  top: 70px;
+  right: 180px;
+  width: 835px;
+
+  .title {
+    font-size: 27px;
+    text-align: center;
+    font-weight: 700;
+    padding: 25px 0;
+  }
+}

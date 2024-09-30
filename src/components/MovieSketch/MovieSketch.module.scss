@@ -1,0 +1,129 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.info-container {
+  display: flex;
+  // overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .info {
+    margin: 0 11px 88px 11px;
+    width: 140px;
+    height: 200px;
+    text-align: center;
+    color: $second-color;
+    transition: $transition;
+    position: relative;
+
+    img {
+      width: inherit;
+      height: inherit;
+      margin-bottom: 9px;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .content {
+    .quality {
+      .tri {
+        width: 65px;
+        height: 20px;
+        transform: rotate(-43deg);
+        position: absolute;
+        top: 20px;
+        left: -9px;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 12px;
+        border-radius: 5px 0px 0px 0px;
+        z-index: 5;
+      }
+
+      .comp {
+        width: 29px;
+        height: 20px;
+        background-color: orange;
+        position: absolute;
+        top: 0;
+        left: 31px;
+        transform: skew(-46deg, 0);
+        z-index: 3;
+      }
+
+      .kdn {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 24px;
+        left: -25px;
+        transform: rotate(44deg);
+        border: 20px solid;
+        border-color: transparent orange transparent transparent;
+        border-radius: 0px 0px 11px 0px;
+        z-index: 3;
+      }
+
+      .detail {
+        position: absolute;
+        top: -2px;
+        bottom: 0;
+        left: 56px;
+        color: #fff;
+        font-weight: 600;
+        transform: rotate(-46deg);
+      }
+
+      .ang {
+        width: 20px;
+        height: 12px;
+        background-color: green;
+        position: absolute;
+        top: 18px;
+        left: 54px;
+        transform: skew(45deg, -44deg);
+        border-radius: 3px;
+      }
+
+      .bot {
+        width: 20px;
+        height: 12px;
+        background-color: green;
+        position: absolute;
+        top: 58px;
+        left: 0px;
+        transform: skew(45deg, -44deg);
+        border-radius: 3px;
+      }
+    }
+
+    .star {
+      position: absolute;
+      top: 17px;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+
+      span {
+        position: absolute;
+        font-size: 13px;
+        font-weight: 700;
+        color: black;
+      }
+
+      .real {
+        color: #ffd400;
+        font-size: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.choseList {
+  position: fixed;
+  width: 168px;
+  margin-top: 70px;
+  border-radius: $radius;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: calc(100% - (120px));
+
+  ul {
+    background-color: #fff;
+    list-style: none;
+
+    // li {
+    // }
+    // .man {
+    //   background-color: green;
+    // }
+
+    // a.link {
+    //   transition: all 0.5s ease;
+    //   text-decoration: none;
+    //   width: 100%;
+    // height: 200px;
+    // background-color: green;
+    // }
+  }
+}

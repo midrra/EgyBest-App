@@ -1,0 +1,38 @@
+@import "../../globalStyle/globalStyle.scss";
+%container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+
+  li {
+    background-color: #fff;
+    padding: 7px 0;
+    width: 145px;
+    margin: 5px;
+    border-radius: $radius;
+    color: $main-color;
+    text-align: center;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-color;
+      color: #fff;
+    }
+  }
+}
+.category {
+  position: absolute;
+  left: 0;
+  width: 310px;
+  margin-top: 65px;
+
+  .category-list {
+    @extend %container;
+  }
+  .fixed-list {
+    @extend %container;
+    position: fixed;
+  }
+}

@@ -1,0 +1,17 @@
+$main-color: #ff2200;
+$second-color: #06c;
+$twitter-color: #00a1cb;
+$subs-color: #10bf46;
+$head-color: #f9f9f9;
+// $head-color: #e8e8e8;
+
+$radius: 4px;
+$line: #bbb;
+
+$transition: all 0.5s ease;
+
+%globalFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
