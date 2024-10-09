@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Navigate, Link, redirect } from "react-router-dom";
 import More from "../../pages/More";
+import MovieDetail from "./MovieDetail";
 import {
   PushSpinner,
   TraceSpinner,
@@ -26,15 +27,9 @@ const GiveMore = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // fetch(
-  //   `https://api.themoviedb.org/3/discover/movie?api_key=88170d99a195633ba877280a25be1735`
-  // );
-
-  // "https://api.themoviedb.org/3/trending/all/day?api_key=88170d99a195633ba877280a25be1735"
   async function allMovies() {
     try {
       const request = await fetch(
-        // "https://api.github.com/repos/facebook/react/issues"
         "https://api.themoviedb.org/3/trending/all/day?api_key=88170d99a195633ba877280a25be1735"
       );
 
@@ -59,17 +54,6 @@ const GiveMore = () => {
     [movies]
   );
 
-  const cutTitleHandler = (t) => {
-    if (t.length > 30) {
-      return "..." + t.split("").slice(0, 30).join("");
-    }
-    return t;
-  };
-
-  const detailHandler = (id) => {
-    navigate(`/movie/${id}`);
-  };
-
   return (
     <Fragment>
       <InfiniteScroll
@@ -82,26 +66,9 @@ const GiveMore = () => {
           </div>
         }
       >
-        <div className={styles.container}>
-          {movies?.map((movie) => (
-            <div
-              className={styles.inner}
-              key={movie.id}
-              onClick={() => detailHandler(movie.id)}
-            >
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              />
-              <p>
-                {cutTitleHandler(
-                  movie.title ? movie.original_title : movie.original_name
-                )}
-              </p>
-            </div>
-          ))}
-        </div>
+        <MovieDetail movies={movies} />
         <div className={styles.spinnerContainer}>
-          <div className="spinne">
+          <div className="spinner">
             <MetroSpinner size={40} color="green" loading={loading} />
           </div>
         </div>

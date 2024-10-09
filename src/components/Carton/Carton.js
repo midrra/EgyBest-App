@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CenterialContainer from "../CenteralContainer/CenteralContainer";
-import { animeApi } from "../Api/Api.";
+import { animeApi } from "../Api/Api";
 
 const Anime = () => {
   useEffect(() => {

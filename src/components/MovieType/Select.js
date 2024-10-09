@@ -8,6 +8,7 @@ const Select = ({ setActive, active, setHover, hover, id, title, log }) => {
         className={active === id ? styles.active : styles.title}
         onClick={() => {
           setActive(id);
+          console.log("work in movie type");
         }}
         onMouseEnter={() => setHover(id)}
         onMouseLeave={() => setHover(false)}

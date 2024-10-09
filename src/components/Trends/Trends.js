@@ -1,40 +1,68 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CenterialContainer from "../CenteralContainer/CenteralContainer";
 import styles from "./Trends.module.scss";
 
-import SellIcon from "@mui/icons-material/Sell";
 import ChooseHeadicon from "./ChooseHeadicon";
 import { headTrends } from "./TrendsData";
-import MovieSketch from "../MovieSketch/MovieSketch";
-import { Mdata } from "../Api/Mdata";
+import { MetroSpinner } from "react-spinners-kit";
 
+import MovieDetail from "../GiveMore/MovieDetail";
 const Trending = () => {
-  const [trend, setTrend] = useState(headTrends[1].id);
+  const [trend, setTrend] = useState(headTrends[0].id);
+  const [title, setTitle] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const date = new Date("9/31/2022");
+  const topMovies = async () => {
+    setMovies([]);
+    setLoading(true);
+    const respond = await fetch(
+      `https://api.themoviedb.org/3/tv/top_rated?api_key=88170d99a195633ba877280a25be1735`
+    );
+    console.log("trolling in work");
+    const result = await respond.json();
+    setLoading(false);
+    return result.results;
+  };
 
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
-  const time = date.getTime();
+  const Toprend = async (time) => {
+    setMovies([]);
+    setLoading(true);
+    const respond = await fetch(
+      `https://api.themoviedb.org/3/trending/all/${time}?api_key=88170d99a195633ba877280a25be1735`
+    );
+    const result = await respond.json();
+    setLoading(false);
+    return result.results;
+  };
 
-  // console.log(year, month, day);
-
-  const present = new Date();
-
-  const presentYear = present.getFullYear();
-  const presentMonth = present.getMonth();
-  const presentDay = present.getDate();
-  const presentMany = present.getMilliseconds();
-  const presentTime = present.getTime();
-
-  // console.log(presentYear, presentMonth, presentDay, presentMany);
-  const res = presentTime - time;
-  console.log(res / 100 / 60 / 60 / 24);
-  // console.log(presentTime / 60 / 60 / 60 / 60);
-
-  // const exp = Date();
-  // console.log(exp);
+  useEffect(() => {
+    async function egyApi() {
+      switch (title) {
+        case headTrends[0].title:
+          const topResult2 = await topMovies();
+          setMovies(topResult2);
+          break;
+        case headTrends[1].title:
+          const resultDay = await Toprend("day");
+          setMovies(resultDay);
+          break;
+        case headTrends[2].title:
+          const weekResult = await Toprend("week");
+          setMovies(weekResult);
+          break;
+        case headTrends[3].title:
+          const dayResult = await Toprend("day");
+          setMovies(dayResult);
+          break;
+        default:
+          let topResult = await topMovies();
+          setMovies(topResult);
+          break;
+      }
+    }
+    egyApi();
+  }, [title]);
 
   return (
     <CenterialContainer>
@@ -49,19 +77,18 @@ const Trending = () => {
                 setTrend={setTrend}
                 id={item.id}
                 active={trend === item.id}
+                setTitle={setTitle}
               />
             ))}
           </div>
         </div>
         <hr />
-        <div className={styles.man}>
-          {/* <MovieSketch
-            movies={Mdata}
-            width={"176px"}
-            height={"250px"}
-            wrap={"wrap"}
-          /> */}
+        <div className={styles.spinnerContainer}>
+          <div className="spinner">
+            <MetroSpinner size={40} color="green" loading={loading} />
+          </div>
         </div>
+        <MovieDetail movies={movies} />
       </div>
     </CenterialContainer>
   );

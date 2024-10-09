@@ -1,0 +1,61 @@
+.quality {
+  .tri {
+    width: 65px;
+    height: 20px;
+    transform: rotate(-43deg);
+    position: absolute;
+    top: 20px;
+    left: -12px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 11px 0px 0px 0;
+    z-index: 5;
+  }
+
+  .comp {
+    width: 29px;
+    height: 21px;
+    position: absolute;
+    top: -5px;
+    left: 33px;
+    transform: skew(-46deg, 0);
+    z-index: 3;
+  }
+
+  .kdn {
+    --color: transparent;
+
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    left: -25px;
+    transform: rotate(44deg);
+    border: 20px solid;
+    border-color: transparent var(--color) transparent transparent;
+    border-radius: 0px 0px 11px 0px;
+    z-index: 3;
+  }
+
+  .ang {
+    width: 20px;
+    height: 12px;
+    position: absolute;
+    top: 3px;
+    left: 56px;
+    transform: skew(45deg, -44deg);
+    border-radius: 3px;
+  }
+
+  .bot {
+    width: 20px;
+    height: 12px;
+    position: absolute;
+    top: 55px;
+    left: -1px;
+    transform: skew(45deg, -44deg);
+    border-radius: 3px;
+  }
+}

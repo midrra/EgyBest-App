@@ -1,8 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 
-export const trandingApi = async () => {
+export const topRated = async () => {
   const respond = await fetch(
-    "https://api.themoviedb.org/3/trending/all/day?api_key=88170d99a195633ba877280a25be1735"
+    `https://api.themoviedb.org/3/tv/top_rated?api_key=88170d99a195633ba877280a25be1735`
+  );
+  const result = await respond.json();
+  return result.results;
+};
+
+export const trendingApi = async (time) => {
+  const respond = await fetch(
+    `https://api.themoviedb.org/3/trending/all/${time}?api_key=88170d99a195633ba877280a25be1735`
   );
   const result = await respond.json();
   return result.results;

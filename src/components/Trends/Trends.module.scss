@@ -4,15 +4,24 @@
   display: flex;
   position: relative;
 
-  .move {
+  .lo {
     margin-left: 10px;
   }
 }
 
 .container {
-  padding: 10px;
+  padding: 10px 0px;
   background-color: #fff;
   height: 100%;
+
+  .spinnerContainer {
+    opacity: 0.6;
+    position: absolute;
+    top: 64px;
+    right: 50%;
+    transform: translate(-50%, 50%);
+    height: 100%;
+  }
 
   .head {
     display: flex;
@@ -41,17 +50,6 @@
 
       .unInner {
         @extend %innerContain;
-      }
-    }
-  }
-
-  .man {
-    color: orange;
-    .change {
-      color: green;
-
-      .info-container {
-        background-color: peru;
       }
     }
   }

@@ -28,7 +28,6 @@ import More from "./pages/More";
 import PagenotFound from "./components/PagenotFound/PagenotFound";
 import Books from "./components/Books/Books.js";
 // import Pluse from "./components/GiveMore/Pluse";
-import { useSelector } from "react-redux";
 
 function App() {
   // const auth = useSelector((state) => state.MovieId.movieOb);
@@ -52,6 +51,7 @@ function App() {
         <Route path={"مسرحيات"} element={<Play />} />
         <Route path={"lib"} element={<Library />} />
         <Route path={"AllMovies/:id"} element={<More />} />
+        <Route path={"movies"} element={<MovieCat />} />
         <Route path={"books"} element={<Books />} />
         <Route path={"*"} element={<PagenotFound />} />
       </Route>

@@ -33,16 +33,35 @@ const MovieType = () => {
       </div>
       <div className={styles.selectContainer}>
         <div className={styles.selectInner}>
-          {movieTypeData.map((item) => (
+          {movieTypeData.map((item) =>
             <Section data={item} key={item.id} />
-          ))}
+          )}
         </div>
       </div>
-      <div>
-        <MovieSketch movies={Mdata} />
-      </div>
+      <div>{/* <MovieSketch movies={Mdata} /> */}</div>
     </CenterialContainer>
   );
 };
 
 export default MovieType;
+
+//////initiate Date
+// const date = new Date("9/31/2022");
+
+// const year = date.getFullYear();
+// const month = date.getMonth();
+// const day = date.getDate();
+// const time = date.getTime();
+
+// // console.log(year, month, day);
+
+// const present = new Date();
+
+// const presentYear = present.getFullYear();
+// const presentMonth = present.getMonth();
+// const presentDay = present.getDate();
+// const presentMany = present.getMilliseconds();
+// const presentTime = present.getTime();
+
+// const res = presentTime - time;
+// console.log(res / 100 / 60 / 60 / 24);

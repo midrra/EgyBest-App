@@ -10,6 +10,7 @@ import { movieOb } from "../../ContextData/MovieId";
 import { reducerId } from "../../ContextData/MoveName";
 import { TurnedIn } from "@mui/icons-material";
 // import { title } from "../../ContextData/MovieId";
+import StateType from "./StateType";
 
 const MovieSketch = (props) => {
   const [quality, setQuality] = useState();
@@ -117,7 +118,8 @@ const MovieSketch = (props) => {
         >
           <div className={styles.content}>
             <div className={styles.quality}>
-              <div style={{ backgroundColor: "green" }} className={styles.tri}>
+              <StateType color="black" type={movie.Qkind} />
+              {/* <div style={{ backgroundColor: "green" }} className={styles.tri}>
                 {movie.Qkind}
               </div>
               <div
@@ -135,7 +137,7 @@ const MovieSketch = (props) => {
               <div
                 style={{ backgroundColor: "green" }}
                 className={styles.bot}
-              ></div>
+              ></div> */}
             </div>
 
             <div className={styles.star}>

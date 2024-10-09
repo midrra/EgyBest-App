@@ -15,8 +15,8 @@ import {
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { items } from "../../ContextData/MovieId";
-import { animeApi } from "../Api/Api.";
-import { trandingApi } from "../Api/Api.";
+import { animeApi } from "../Api/Api";
+import { trendingApi } from "../Api/Api";
 // import More from '../../pages/More';
 // import Allcontents from "./AllContents";
 // import { Route, Routes, Navigate, Redirect, Outlet,BrowserRouter } from "react-router-dom";
@@ -71,7 +71,7 @@ const MiddleContent = (props) => {
 
   useEffect(() => {
     async function animeHandler() {
-      const trand = await trandingApi();
+      const trand = await trendingApi("day");
       setMovies(trand);
 
       const result = await animeApi();
