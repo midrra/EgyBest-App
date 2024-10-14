@@ -15,5 +15,5 @@
 //   },
 // });
 
-// export const authActions = reducer.actions;
+// export const authActions = authLoading.actions;
 // export default authLoading.reducer;

@@ -27,6 +27,8 @@ import Library from "./pages/Library";
 import More from "./pages/More";
 import PagenotFound from "./components/PagenotFound/PagenotFound";
 import Books from "./components/Books/Books.js";
+import Login from "./pages/login/Login.js";
+import Join from "./pages/Join/Join.js";
 // import Pluse from "./components/GiveMore/Pluse";
 
 function App() {
@@ -42,17 +44,18 @@ function App() {
         <Route index element={<MiddleContent />} />
         <Route path={`movie/:id`} element={<Moviedetail />} />
         <Route path={"egybest"} element={<EgyHome />} />
-        <Route path="افلام" element={<MovieCat />} />
         <Route path={"trending"} element={<Trending />} />
-        <Route path={"مسلسلات"} element={<EgySeries />} />
-        <Route path={"Anime"} element={<Anime />} />
-        <Route path={"pro"} element={<Programs />} />
-        <Route path={"المصارعه الحره"} element={<Sport />} />
-        <Route path={"مسرحيات"} element={<Play />} />
-        <Route path={"lib"} element={<Library />} />
         <Route path={"AllMovies/:id"} element={<More />} />
         <Route path={"movies"} element={<MovieCat />} />
+        <Route path={"مسلسلات"} element={<EgySeries />} />
         <Route path={"books"} element={<Books />} />
+        <Route path={"login"} element={<Login />} />
+        <Route path={"join"} element={<Join />} />
+        <Route path={"مسرحيات"} element={<Play />} />
+        <Route path={"Anime"} element={<Anime />} />
+        <Route path={"pro"} element={<Programs />} />
+        <Route path={"lib"} element={<Library />} />
+        <Route path={"المصارعه الحره"} element={<Sport />} />
         <Route path={"*"} element={<PagenotFound />} />
       </Route>
     )

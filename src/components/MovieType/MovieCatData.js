@@ -22,80 +22,62 @@ export const MovieCatData = [
   },
 ];
 
-export const movieTypeData = [
-  {
-    id: 1,
-    type1: "السنه",
-    type2: "2022",
-    type3: "2021",
-    type4: "2020",
-    type5: "2019",
-  },
-  {
-    id: 2,
-    main: "اللغه",
-    type1: "اللغه",
-    type2: "الانجليزيه",
-    type3: "الفرنسيه",
-    type4: "البرتغاليه",
-    type5: "الارجنتينيه",
-  },
-  {
-    id: 3,
-    main: "البلد",
-    type1: "السودان",
-    type2: "مصر",
-    type3: "الولايات المتحده",
-    type4: "المملكه المتحده",
-    type5: "البرازيل",
-  },
-  {
-    id: 4,
-    main: "النوع",
-    type1: "التصنيف",
-    type2: "اكشن",
-    type3: "مغامره",
-    type4: "خيال",
-    type5: "فانتازيا",
-  },
-  {
-    id: 5,
-    main: "التصنيف",
-    type1: "سفاري",
-    type2: "اكشن",
-    type3: "مغامره",
-    type4: "خيال",
-    type5: "فانتازيا",
-    type6: "مانغا",
-  },
-  {
-    id: 6,
-    main: "الجوده",
-    type1: "1080",
-    type2: "720",
-    type3: "480",
-    type4: "320",
-    type5: "220",
-  },
-  {
-    id: 7,
-    main: "الدقه",
-    type1: "2022",
-    type2: "2021",
-    type3: "2020",
-    type4: "2019",
-    type5: "2018",
-  },
-  {
-    id: 8,
-    main: "الترجمه",
-    type1: "العربيه",
-    type2: "الانجليزيه",
-    type3: "الفرنيسه",
-    type4: "البرتقاليه",
-    type5: "الارجنتينيه",
-    type6: "السوريه",
-    type7: "السودانيه",
-    type8: "المصريه",
-  },
+export const years = [
+  { year: "السنه" },
+  { year: "2022" },
+  { year: "2021" },
+  { year: "2020" },
+  { year: "2019" },
+  { year: "2013" },
+];
+export const language = [
+  { lang: "اللغه" },
+  { lang: "en" },
+  { lang: "ja" },
+  { lang: "ko" },
+  { lang: "الفرنسيه" },
+  { lang: "البرتغاليه" },
+  { lang: "الارجنتينيه" },
+];
+
+export const country = [
+  { coun: "البلد" },
+  { coun: "MX" },
+  { coun: "US" },
+  { coun: "JP" },
+  { coun: "السودان" },
+  { coun: "مصر" },
+  { coun: "الولايات المتحده" },
+  { coun: "المملكه المتحده" },
+  { coun: "البرازيل" },
+];
+
+export const sort = [
+  { sor: "النوع" },
+  { sor: "tv" },
+  { sor: "movie" },
+  { sor: "مغامره" },
+  { sor: "خيال" },
+  { sor: "فانتازيا" },
+];
+
+export const quality = [
+  { qua: "الدقه" },
+  { qua: "2022" },
+  { qua: "2021" },
+  { qua: "2020}" },
+  { qua: "2019" },
+  { qua: "2018" },
+];
+
+export const translate = [
+  { trans: "الترجمه" },
+  { trans: "العربيه" },
+  { trans: "الانجليزيه" },
+  { trans: "الفرنيسه" },
+  { trans: "البرتقاليه" },
+  { trans: "الارجنتينيه" },
+  { trans: "السوريه" },
+  { trans: "السودانيه" },
+  { trans: "المصريه" },
 ];

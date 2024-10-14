@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import styles from "./MovieDetail.module.scss";
 import { useNavigate } from "react-router-dom";
 
-function MovieDetail({ movies }) {
-  // const navigate = useNavigate();
+function MovieDetail({ movies, color }) {
+  const navigate = useNavigate();
 
   const cutTitleHandler = (t) => {
     if (t.length > 20) {
@@ -14,11 +14,11 @@ function MovieDetail({ movies }) {
   };
 
   const detailHandler = (id) => {
-    // navigate(`/movie/${id}`);
+    navigate(`/movie/${id}`);
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ backgroundColor: color }}>
       {movies?.map((movie, i) => (
         <div
           className={styles.inner}

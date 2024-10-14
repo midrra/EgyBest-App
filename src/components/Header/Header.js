@@ -2,6 +2,7 @@ import react, { useState, useRef, useContext } from "react";
 import styles from "./Header.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 import Reducer from "../../ContextData/ContextData";
 
 const Header = () => {
@@ -36,11 +37,11 @@ const Header = () => {
       <div className={styles["left-head"]}>
         <div className={styles["button-sub"]}>
           <PersonIcon />
-          <a href="#">اشترك مجانآ</a>
+          <Link to="join">اشترك مجانآ</Link>
         </div>
-        <a href="#" className={styles["button-inter"]}>
+        <Link to="login" className={styles["button-inter"]}>
           تسجيل الدخول
-        </a>
+        </Link>
       </div>
     </Container>
   );
