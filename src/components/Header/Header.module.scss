@@ -12,12 +12,15 @@
   font-weight: 600;
   cursor: pointer;
 }
+
 @mixin link {
   color: #fff;
   text-decoration: none;
 }
+
 .container {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   height: 60px;

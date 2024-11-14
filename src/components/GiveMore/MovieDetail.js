@@ -23,7 +23,7 @@ function MovieDetail({ movies, color }) {
         <div
           className={styles.inner}
           key={i}
-          onClick={() => detailHandler(movie.id)}
+          onClick={() => detailHandler(movie.name)}
         >
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <p>

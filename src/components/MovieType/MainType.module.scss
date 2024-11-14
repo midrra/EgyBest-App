@@ -1,0 +1,36 @@
+@import "../../globalStyle/globalStyle.scss";
+.content {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  height: 55px;
+
+  .category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 74%;
+  }
+}
+
+.selectContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $head-color;
+  height: 100px;
+
+  .selectInner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 38px;
+    flex-wrap: wrap;
+
+    select {
+      border-radius: 2px;
+      margin-bottom: 10px;
+      width: 100px;
+    }
+  }
+}

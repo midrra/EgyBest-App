@@ -1,33 +1,19 @@
 import React, { useState, useEffect } from "react";
-import CenterialContainer from "../CenteralContainer/CenteralContainer";
-import styles from "./MovieType.module.scss";
-import { MovieCatData } from "./MovieCatData";
-import Section from "./Section";
-import Select from "./Select";
-import MovieDetail from "../GiveMore/MovieDetail";
-import { trendingApi } from "../Api/Api";
-import { allTrend } from "./Allmovies";
-import { years } from "./MovieCatData";
-import { language } from "./MovieCatData";
-import { sort } from "./MovieCatData";
-import { quality } from "./MovieCatData";
-import { translate } from "./MovieCatData";
-import { country } from "./MovieCatData";
+
+import CenterialContainer from "../CenteralContainer/CenteralContainer.js";
+import { moviesApi } from "../Api/Api";
+import MainTypes from "./MainTypes.js";
+import { MovieCatData } from "./MovieCatData.js";
 
 const MovieType = () => {
-  const [active, setActive] = useState(1);
-  const [hover, setHover] = useState(1);
-  const [kind, setKind] = useState({ kind: "" });
-  const [filtleredMovie, setFilteredMovie] = useState([]);
   const [movies, setMovies] = useState([]);
+  const [filteredMovie, setFilteredMovie] = useState([]);
+  const [kind, setKind] = useState({ kind: "" });
 
   useEffect(() => {
     ////Fetch Trending Api
     const trending = async () => {
-      const result = await trendingApi("day");
-      // setFilteredMovie(result);
-
-      const data = await allTrend();
+      const data = await moviesApi("day");
       setFilteredMovie(data);
       setMovies(data);
 
@@ -70,33 +56,11 @@ const MovieType = () => {
 
   return (
     <CenterialContainer>
-      <div className={styles.content}>
-        <div className={styles.category}>
-          {MovieCatData.map((item) => (
-            <Select
-              key={item.id}
-              active={active}
-              setActive={setActive}
-              hover={hover}
-              setHover={setHover}
-              id={item.id}
-              title={item.title}
-              log={item.log}
-            />
-          ))}
-        </div>
-      </div>
-      <div className={styles.selectContainer}>
-        <div className={styles.selectInner}>
-          <Section data={years} name="nice" sort={"year"} setKind={setKind} />
-          <Section data={language} sort={"lang"} setKind={setKind} />
-          <Section data={sort} sort={"sor"} setKind={setKind} />
-          <Section data={translate} sort={"trans"} setKind={setKind} />
-          <Section data={quality} sort={"qua"} setKind={setKind} />
-          <Section data={country} sort={"coun"} setKind={setKind} />
-        </div>
-      </div>
-      <MovieDetail movies={filtleredMovie} color="#f9f9f9" />
+      <MainTypes
+        filteredMovie={filteredMovie}
+        setKind={setKind}
+        MovieCatData={MovieCatData}
+      />
     </CenterialContainer>
   );
 };

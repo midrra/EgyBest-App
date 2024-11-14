@@ -1,9 +1,8 @@
 import SellIcon from "@mui/icons-material/Sell";
-
-export const MovieCatData = [
+export const seriesData = [
   {
     id: 1,
-    title: "افلام",
+    title: "مسلسلات",
     log: <SellIcon />,
   },
   {
@@ -13,7 +12,7 @@ export const MovieCatData = [
   },
   {
     id: 3,
-    title: "افضل الافلام",
+    title: "افضل المسلسلات",
     log: <SellIcon />,
   },
   {
@@ -31,7 +30,6 @@ export const years = [
   { year: "2019" },
   { year: "2013" },
 ];
-
 export const language = [
   { lang: "اللغه" },
   { lang: "en" },

@@ -1,148 +1,129 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styles from "./MovieTitle.module.scss";
 import SellIcon from "@mui/icons-material/Sell";
-import Reducer from "../../ContextData/ContextData";
-import {
-  useSearchParams,
-  useLocation,
-  searchParams,
-  useParams,
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { reducerId } from "../../ContextData/MoveName";
+import { useParams, useNavigate } from "react-router-dom";
+import { movieInfo } from "../Api/Api";
+import { MetroSpinner } from "react-spinners-kit";
 
 const MovieTitle = () => {
-  const [params, setParams] = useSearchParams({ f: "" });
-  const [movie, setMove] = useState(null);
-  const movecontext = useContext(reducerId);
-
-  const auth = useSelector((state) => state.MovieId.movieOb);
-  const auther = useSelector((state) => state.MovieId.items);
-  const res = auther.find((item) => item.title === auth);
-
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  console.log(id, "useParams");
-
-  const location = useLocation();
-  console.log(location.pathname, "the location");
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function detail() {
-      // 533535
-      try {
-        const request = await fetch(
-          `https://api.themoviedb.org/3/movie/${
-            movecontext.id || id
-          }?api_key=88170d99a195633ba877280a25be1735`
-        );
-        if (request.status !== 200) throw Error("Something went wrong");
-        const respond = await request.json();
-        setMove(respond);
-      } catch (e) {
-        console.error(e.message);
+      const movieName = id;
+      const result = await movieInfo(movieName);
+      if (result.length === 0) {
+        navigate("/404");
       }
+      console.log(result, "from movie title");
+      setMovie(...result);
     }
     detail();
   }, []);
-  console.log(movie, "from moviedetail");
-  console.log(movecontext.id);
-  console.log(movie?.poster_path);
 
   return (
-    <div className={styles.container} onClick={() => setParams({ f: "man" })}>
-      <div className={styles["content-part"]}>
-        <div className={styles.innerContent}>
-          <div className={styles.booster}>
-            <div className={styles.image}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${
-                  movie?.poster_path || movie?.backdrop_path
-                }`}
-              />
+    <Fragment>
+      <div className="spinner">
+        <MetroSpinner size={40} color="green" loading={loading} />
+      </div>
+      <div className={styles.container}>
+        <div className={styles["content-part"]}>
+          <div className={styles.innerContent}>
+            <div className={styles.booster}>
+              <div className={styles.image}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${
+                    movie?.poster_path || movie?.backdrop_path
+                  }`}
+                />
+              </div>
+              <button>
+                <span>
+                  <SellIcon className={styles.icon} />
+                </span>
+                مشاهده وتحميل الفيلم
+              </button>
             </div>
-            <button>
+            <div className={styles.info}>
+              <h1>
+                {/* {res?.title || res?.original_title} {res?.release_date} */}
+              </h1>
+              <div className={styles.content}>
+                <div className={styles.type}>
+                  <ul>
+                    <li>اللغه.البلد</li>
+                    <li>التصنيف</li>
+                    <li>النوع</li>
+                    <li>التقييم</li>
+                    <li>المده</li>
+                    <li>الجوده</li>
+                    <li>الترجمه</li>
+                  </ul>
+                </div>
+                <div className={styles.cond}>
+                  <ul>
+                    <li>
+                      {movie?.original_language} . {movie?.origin_country}
+                    </li>
+                    {/* // <li>{res?.reco}</li>
+                  // <li>{res?.type}</li>
+                  // <li>{res?.range}</li>
+                  // <li>{res?.time}</li>
+                  // <li>{res?.quality}</li> */}
+                    <li>{/* <span>{movie?.spoken_languages}</span> */}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles.notes}>
+            <p>
               <span>
-                <SellIcon className={styles.icon} />
+                <SellIcon />
               </span>
-              مشاهده وتحميل الفيلم
-            </button>
+              هذا الفيلم ليس متوفر بجودة عالية حتى الان لانه جديد و مازال يعرض
+              في السينما. لا يوجد تاريخ محدد لاصدار نسخة الجودة العالية.
+            </p>
           </div>
-          <div className={styles.info}>
-            <h1>
-              {res?.title || res?.original_title} {res?.release_date}
-            </h1>
-            <div className={styles.content}>
-              <div className={styles.type}>
-                <ul>
-                  <li>اللغه.البلد</li>
-                  <li>التصنيف</li>
-                  <li>النوع</li>
-                  <li>التقييم</li>
-                  <li>المده</li>
-                  <li>الجوده</li>
-                  <li>الترجمه</li>
-                </ul>
-              </div>
-              <div className={styles.cond}>
-                <ul>
-                  <li>
-                    {movie?.original_language} . {movie?.origin_country}
-                  </li>
-                  <li>{res?.reco}</li>
-                  <li>{res?.type}</li>
-                  <li>{res?.range}</li>
-                  <li>{res?.time}</li>
-                  <li>{res?.quality}</li>
-                  <li>{/* <span>{movie?.spoken_languages}</span> */}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className={styles.notes}>
-          <p>
-            <span>
-              <SellIcon />
-            </span>
-            هذا الفيلم ليس متوفر بجودة عالية حتى الان لانه جديد و مازال يعرض في
-            السينما. لا يوجد تاريخ محدد لاصدار نسخة الجودة العالية.
-          </p>
-        </div>
-        <div className={styles["movie-rate"]}>
-          <h1>تقييم المشاهدين</h1>
-          <div className={styles["inner-rate"]}>
-            <div className={styles["container-rate"]}>
-              <div className={styles.contain}>
-                <div className={styles.circle}>
-                  <span>{movie?.vote_count}</span>
-                  <div className={styles.inn}></div>
-                  <div
-                    className={styles.fill}
-                    style={{ bottom: movie?.vote_count }}
-                  ></div>
+          <div className={styles["movie-rate"]}>
+            <h1>تقييم المشاهدين</h1>
+            <div className={styles["inner-rate"]}>
+              <div className={styles["container-rate"]}>
+                <div className={styles.contain}>
+                  <div className={styles.circle}>
+                    <span>{movie?.vote_count}</span>
+                    <div className={styles.inn}></div>
+                    <div
+                      className={styles.fill}
+                      style={{ bottom: movie?.vote_count }}
+                    ></div>
+                  </div>
+                  <p>من المشاهدين اعجبهم هذا الفيلم</p>
                 </div>
-                <p>من المشاهدين اعجبهم هذا الفيلم</p>
-              </div>
-              <div className={styles.like}>
-                <div className={styles.lfg}>
-                  <SellIcon />
-                </div>
-                <div className={styles.lfg}>
-                  <SellIcon />
+                <div className={styles.like}>
+                  <div className={styles.lfg}>
+                    <SellIcon />
+                  </div>
+                  <div className={styles.lfg}>
+                    <SellIcon />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.story}>
-          <h1>القصة</h1>
-          <div className={styles["inner-story"]}>
-            <h2>{movie?.title}</h2>
-            <p>{movie?.overview}</p>
+          <div className={styles.story}>
+            <h1>القصة</h1>
+            <div className={styles["inner-story"]}>
+              <h2>{movie?.title}</h2>
+              <p>{movie?.overview}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

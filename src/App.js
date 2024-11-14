@@ -18,18 +18,16 @@ import Home from "./components/Home/Home";
 import EgyHome from "./pages/EgyHome";
 import MovieCat from "./pages/MovieCat.js";
 import Trending from "./pages/Trending";
-import EgySeries from "./pages/EgySeries";
-import Anime from "./pages/Anime";
+import Anime from "./pages/ِAnime/Anime.js";
 import Programs from "./pages/Programs";
 import Sport from "./pages/Sport";
-import Play from "./pages/Play";
 import Library from "./pages/Library";
 import More from "./pages/More";
 import PagenotFound from "./components/PagenotFound/PagenotFound";
 import Books from "./components/Books/Books.js";
 import Login from "./pages/login/Login.js";
 import Join from "./pages/Join/Join.js";
-// import Pluse from "./components/GiveMore/Pluse";
+import Series from "./pages/Series/Series.js";
 
 function App() {
   // const auth = useSelector((state) => state.MovieId.movieOb);
@@ -47,16 +45,15 @@ function App() {
         <Route path={"trending"} element={<Trending />} />
         <Route path={"AllMovies/:id"} element={<More />} />
         <Route path={"movies"} element={<MovieCat />} />
-        <Route path={"مسلسلات"} element={<EgySeries />} />
         <Route path={"books"} element={<Books />} />
         <Route path={"login"} element={<Login />} />
         <Route path={"join"} element={<Join />} />
-        <Route path={"مسرحيات"} element={<Play />} />
+        <Route path={"series"} element={<Series />} />
         <Route path={"Anime"} element={<Anime />} />
         <Route path={"pro"} element={<Programs />} />
         <Route path={"lib"} element={<Library />} />
         <Route path={"المصارعه الحره"} element={<Sport />} />
-        <Route path={"*"} element={<PagenotFound />} />
+        <Route path={"404"} element={<PagenotFound />} />
       </Route>
     )
   );
