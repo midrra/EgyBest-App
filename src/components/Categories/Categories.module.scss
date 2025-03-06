@@ -28,6 +28,12 @@
   width: 310px;
   margin-top: 65px;
 
+  & {
+    @include tablet {
+      display: none;
+    }
+  }
+
   .category-list {
     @extend %container;
   }

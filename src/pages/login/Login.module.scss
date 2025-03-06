@@ -1,5 +1,8 @@
 @import "../../globalStyle/globalStyle.scss";
 
+// body {
+//   overflow: hidden;
+// }
 %input {
   width: 100%;
   border-radius: 4px;
@@ -38,7 +41,7 @@
       align-items: center;
       flex: 1;
 
-      .form {
+      form {
         width: 100%;
         display: flex;
         align-items: center;
@@ -63,7 +66,6 @@
           position: relative;
           width: 42%;
           margin-top: 60px;
-          margin-bottom: 20px;
 
           input {
             @extend %input;
@@ -95,6 +97,19 @@
           }
         }
 
+        .errE {
+          color: red;
+          margin-bottom: 20px;
+        }
+
+        .errPa {
+          color: red;
+          width: 55%;
+          text-align: center;
+        }
+        input:invalid ~ p {
+          color: green;
+        }
         .check {
           width: 42%;
           display: flex;
@@ -152,17 +167,6 @@
 
     .right {
       flex: 1;
-      // background-color: $subs-color;
-      // height: 100%;
     }
   }
 }
-// .title {
-// position: absolute;
-// top: 30%;
-// right: 50%;
-// color: #fff;
-// font-size: 50px;
-// font-weight: bold;
-// z-index: 500000000;
-// }

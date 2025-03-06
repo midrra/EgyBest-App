@@ -6,6 +6,23 @@
   right: 180px;
   width: 835px;
 
+  & {
+    @include large {
+      width: 654px;
+    }
+    @include desktop {
+      width: 474px;
+    }
+    @include tablet {
+      right: 178px;
+      width: 560px;
+    }
+    @include mobile {
+      right: 0;
+      width: 100%;
+    }
+  }
+
   .innerContent {
     margin: 0 10px;
     border-radius: $radius;

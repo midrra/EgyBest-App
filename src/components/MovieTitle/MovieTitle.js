@@ -52,30 +52,46 @@ const MovieTitle = () => {
                 {/* {res?.title || res?.original_title} {res?.release_date} */}
               </h1>
               <div className={styles.content}>
+                <table>
+                  <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                  </tr>
+                  <tr>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                  </tr>
+                </table>
+                {/* <div className={styles.type}>
+                  <p>اللغه.البل</p>
+                  <p>الجوده</p>
+                </div>
                 <div className={styles.type}>
+                  <p>اللغه.البل</p>
+                  <p>الجوده</p>
+                </div>
+                <div className={styles.type}>
+                  <p>اللغه.البل</p>
+                  <p>الجوده</p>
+                </div> */}
+                {/* <div className={styles.type}>
                   <ul>
                     <li>اللغه.البلد</li>
                     <li>التصنيف</li>
                     <li>النوع</li>
                     <li>التقييم</li>
-                    <li>المده</li>
+                    {/* <li>المده</li>
                     <li>الجوده</li>
-                    <li>الترجمه</li>
-                  </ul>
-                </div>
-                <div className={styles.cond}>
+                    <li>الترجمه</li> */}
+                {/* </ul>
+                </div> */}
+                {/* <div className={styles.cond}>
                   <ul>
                     <li>
                       {movie?.original_language} . {movie?.origin_country}
                     </li>
-                    {/* // <li>{res?.reco}</li>
-                  // <li>{res?.type}</li>
-                  // <li>{res?.range}</li>
-                  // <li>{res?.time}</li>
-                  // <li>{res?.quality}</li> */}
-                    <li>{/* <span>{movie?.spoken_languages}</span> */}</li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

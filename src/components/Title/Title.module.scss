@@ -6,10 +6,36 @@
   right: 180px;
   width: 835px;
 
+  & {
+    @include large {
+      right: 105px;
+    }
+    @include desktop {
+      right: 0;
+    }
+    @include tablet {
+      right: 210px;
+      width: 70%;
+    }
+    @include mobile {
+      right: 83px;
+      width: 70%;
+    }
+  }
+
   .title {
     font-size: 27px;
     text-align: center;
     font-weight: 700;
     padding: 25px 0;
+
+    & {
+      @include desktop {
+        font-size: 23px;
+      }
+      @include tablet {
+        font-size: 20px;
+      }
+    }
   }
 }

@@ -13,6 +13,8 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "firebase": "^11.3.1",
+    "formik": "^2.4.6",
     "ityped": "^1.0.3",
     "parse-link-header": "^2.0.0",
     "react": "^18.0.0",
@@ -26,8 +28,10 @@
     "react-select": "^5.8.1",
     "react-spinners-kit": "^1.9.1",
     "redux": "^4.2.0",
+    "sass": "^1.85.0",
     "swiper": "^11.1.9",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -54,7 +58,6 @@
     ]
   },
   "devDependencies": {
-    "dart-sass": "^1.25.0",
-    "node-sass": "npm:dart-sass@^1.25.0"
+    "dart-sass": "^1.25.0"
   }
 }

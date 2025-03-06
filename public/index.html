@@ -1,4 +1,4 @@
-npm satart<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
@@ -26,5 +26,29 @@ npm satart<!DOCTYPE html>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="overlay"></div>
     <div id="root"></div>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAyFhd7oA6AdeIANADTjXlY8xgI1d-UKVc",
+        authDomain: "egybest-app-d8542.firebaseapp.com",
+        projectId: "egybest-app-d8542",
+        storageBucket: "egybest-app-d8542.firebasestorage.app",
+        messagingSenderId: "887942718584",
+        appId: "1:887942718584:web:d461f57953d66df654f98d",
+        measurementId: "G-XJ3QPFC8ZZ",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>

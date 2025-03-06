@@ -15,3 +15,52 @@ $transition: all 0.5s ease;
   justify-content: center;
   align-items: center;
 }
+
+//Large
+$largeWidth: 1400px;
+@mixin large {
+  @media (max-width: $largeWidth) {
+    @content;
+  }
+}
+
+//Desktop
+$desktopWidth: 1200px;
+@mixin desktop {
+  @media (max-width: $desktopWidth) {
+    @content;
+  }
+}
+
+//Tablet
+$tabletWidth: 992px;
+
+@mixin tablet {
+  @media (max-width: $tabletWidth) {
+    @content;
+  }
+}
+
+//Mobile
+$mobileWidth: 768px;
+@mixin mobile {
+  @media (max-width: $mobileWidth) {
+    @content;
+  }
+}
+
+//Extramobile
+$ExtramobileWidth: 600px;
+@mixin Extramobile {
+  @media (max-width: $ExtramobileWidth) {
+    @content;
+  }
+}
+
+//Minimobile
+$miniWidth: 370px;
+@mixin minimobile {
+  @media (max-width: $miniWidth) {
+    @content;
+  }
+}

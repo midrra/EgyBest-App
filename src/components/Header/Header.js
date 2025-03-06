@@ -4,9 +4,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import Reducer from "../../ContextData/ContextData";
+import Menu from "./Menu";
 
 const Header = () => {
   const [lang, setLang] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
+  const [showCv, seSshowcv] = useState(true);
   const res = useRef();
 
   // const context = useContext(Reducer);
@@ -43,6 +46,15 @@ const Header = () => {
           تسجيل الدخول
         </Link>
       </div>
+      <div
+        className={menuOpen ? styles.hamburger : styles.active}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span className="line1"></span>
+        <span className="line2"></span>
+        <span className="line3"></span>
+      </div>
+      <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
     </Container>
   );
 };
