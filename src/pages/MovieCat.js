@@ -1,8 +1,8 @@
 import React from "react";
-import MovieType from "../components/MovieType/MovieType";
+import MainType from "../components/MovieType/MainType.js";
 
 const MovieCat = () => {
-  return <MovieType />;
+  return <MainType />;
 };
 
 export default MovieCat;

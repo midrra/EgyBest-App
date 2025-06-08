@@ -80,8 +80,6 @@ const MiddleContent = (props) => {
     animeHandler();
   }, []);
 
-  console.log(anime, "from her down tawm");
-
   return (
     <CenterialContainer>
       <Content name={"Trending"} movies={movies} />

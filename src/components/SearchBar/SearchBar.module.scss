@@ -1,0 +1,83 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.container {
+  .miniContainer {
+    .input {
+      width: 605px;
+      padding: 0 10px;
+      height: 35px;
+      border-radius: $radius;
+      border: 1px solid $line;
+      color: #888;
+      font-size: 17px;
+      direction: ltr;
+
+      @include desktop {
+        width: 517px;
+      }
+      @include tablet {
+        width: 300px;
+      }
+      @include mobile {
+        display: none;
+      }
+
+      &:focus {
+        box-shadow: 0px 0px 4px $twitter-color;
+        outline: none;
+        border: none;
+      }
+    }
+
+    .resultsContainer {
+      position: absolute;
+      width: 605px;
+      margin-top: 1rem;
+      z-index: 100;
+      overflow-y: auto;
+      max-height: 500px;
+
+      @include desktop {
+        width: 517px;
+      }
+      @include tablet {
+        width: 300px;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: #fff;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+
+        .poster {
+          width: 80px;
+          height: 120px;
+          object-fit: cover;
+          border-radius: 6px;
+        }
+        .placeholder {
+          width: 80px;
+          height: 120px;
+          background-color: #ddd;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #888;
+          font-size: 0.8rem;
+          border-radius: 6px;
+        }
+      }
+
+      .date {
+        font-size: 0.9rem;
+        color: #666;
+      }
+    }
+  }
+}

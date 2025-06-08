@@ -13,7 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
-    "firebase": "^11.3.1",
+    "firebase": "^11.8.1",
     "formik": "^2.4.6",
     "ityped": "^1.0.3",
     "parse-link-header": "^2.0.0",

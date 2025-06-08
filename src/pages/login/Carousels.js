@@ -4,7 +4,12 @@ import Carousel from "react-bootstrap/Carousel";
 function Carousels() {
   return (
     <Carousel>
-      <Carousel.Item>
+      <Carousel.Item
+        style={{
+          height: "90vh",
+          width: "100%",
+        }}
+      >
         <img
           src={"photes/input-1.jpg"}
           style={{
@@ -18,9 +23,14 @@ function Carousels() {
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
+      <Carousel.Item
+        style={{
+          height: "90vh",
+          width: "100%",
+        }}
+      >
         <img
-          src={"photes/input-2.jpg"}
+          src={"photes/input-1.jpg"}
           style={{
             height: "100%",
             width: "100%",

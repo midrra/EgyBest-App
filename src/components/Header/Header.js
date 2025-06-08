@@ -1,40 +1,32 @@
-import react, { useState, useRef, useContext } from "react";
+import react, { useState } from "react";
 import styles from "./Header.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import Reducer from "../../ContextData/ContextData";
 import Menu from "./Menu";
+import MovieSearch from "../SearchBar/SearchBar";
 
 const Header = () => {
-  const [lang, setLang] = useState(false);
   const [menuOpen, setMenuOpen] = useState(true);
-  const [showCv, seSshowcv] = useState(true);
-  const res = useRef();
-
-  // const context = useContext(Reducer);
-  // const error = context.login();
-
-  // console.log(context.item);
-
-  const ini = res.current;
-
-  const changeHandler = () => {};
 
   return (
     <Container className={styles.container}>
       <div className={styles["right-head"]}>
-        <div className={styles.logo} id="man">
+        <div className={styles.logo}>
           <span>Egy</span>Best
         </div>
         <div>
-          <input
-            ref={res}
+          <MovieSearch />
+          {/* <input
             type="search"
-            className={lang ? styles.input : styles["input-header"]}
+            className={styles["input-header"]}
             placeholder="ابحث عن فيلم او مسلسل او ممثل..."
-            onChange={changeHandler}
-          />
+            onChange={"handleChange"}
+            // style={{
+            //   direction: direction,
+            //   textAlign: direction === "ltr" ? "left" : "right",
+            // }}
+          /> */}
         </div>
       </div>
       <div className={styles["left-head"]}>

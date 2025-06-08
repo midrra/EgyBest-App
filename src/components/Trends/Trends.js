@@ -6,7 +6,7 @@ import ChooseHeadicon from "./ChooseHeadicon";
 import { headTrends } from "./TrendsData";
 import { MetroSpinner } from "react-spinners-kit";
 
-import MovieDetail from "../GiveMore/MovieDetail";
+import MovieDetail from "../MovieDetail/MovieDetail";
 const Trending = () => {
   const [trend, setTrend] = useState(headTrends[0].id);
   const [title, setTitle] = useState("");
@@ -19,7 +19,6 @@ const Trending = () => {
     const respond = await fetch(
       `https://api.themoviedb.org/3/tv/top_rated?api_key=88170d99a195633ba877280a25be1735`
     );
-    console.log("trolling in work");
     const result = await respond.json();
     setLoading(false);
     return result.results;
@@ -89,6 +88,7 @@ const Trending = () => {
           </div>
         </div>
         <MovieDetail movies={movies} />
+        {console.log(movies, "movies in trends")}
       </div>
     </CenterialContainer>
   );

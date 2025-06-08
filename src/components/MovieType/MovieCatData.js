@@ -33,53 +33,53 @@ export const years = [
 ];
 
 export const language = [
-  { lang: "اللغه" },
-  { lang: "en" },
-  { lang: "ja" },
-  { lang: "ko" },
-  { lang: "الفرنسيه" },
-  { lang: "البرتغاليه" },
-  { lang: "الارجنتينيه" },
+  { language: "اللغه" },
+  { language: "en" },
+  { language: "ja" },
+  { language: "ko" },
+  { language: "الفرنسيه" },
+  { language: "البرتغاليه" },
+  { language: "الارجنتينيه" },
 ];
 
 export const country = [
-  { coun: "البلد" },
-  { coun: "MX" },
-  { coun: "US" },
-  { coun: "JP" },
-  { coun: "السودان" },
-  { coun: "مصر" },
-  { coun: "الولايات المتحده" },
-  { coun: "المملكه المتحده" },
-  { coun: "البرازيل" },
+  { country: "البلد" },
+  { country: "MX" },
+  { country: "US" },
+  { country: "JP" },
+  { country: "السودان" },
+  { country: "مصر" },
+  { country: "الولايات المتحده" },
+  { country: "المملكه المتحده" },
+  { country: "البرازيل" },
 ];
 
 export const sort = [
-  { sor: "النوع" },
-  { sor: "tv" },
-  { sor: "movie" },
-  { sor: "مغامره" },
-  { sor: "خيال" },
-  { sor: "فانتازيا" },
+  { type: "النوع" },
+  { type: "tv" },
+  { type: "movie" },
+  { type: "مغامره" },
+  { type: "خيال" },
+  { type: "فانتازيا" },
 ];
 
 export const quality = [
-  { qua: "الدقه" },
-  { qua: "2022" },
-  { qua: "2021" },
-  { qua: "2020}" },
-  { qua: "2019" },
-  { qua: "2018" },
+  { quality: "الدقه" },
+  { quality: "2022" },
+  { quality: "2021" },
+  { quality: "2020}" },
+  { quality: "2019" },
+  { quality: "2018" },
 ];
 
-export const translate = [
-  { trans: "الترجمه" },
-  { trans: "العربيه" },
-  { trans: "الانجليزيه" },
-  { trans: "الفرنيسه" },
-  { trans: "البرتقاليه" },
-  { trans: "الارجنتينيه" },
-  { trans: "السوريه" },
-  { trans: "السودانيه" },
-  { trans: "المصريه" },
+export const translation = [
+  { translation: "الترجمه" },
+  { translation: "العربيه" },
+  { translation: "الانجليزيه" },
+  { translation: "الفرنيسه" },
+  { translation: "البرتقاليه" },
+  { translation: "الارجنتينيه" },
+  { translation: "السوريه" },
+  { translation: "السودانيه" },
+  { translation: "المصريه" },
 ];

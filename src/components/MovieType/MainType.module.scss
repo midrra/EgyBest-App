@@ -14,11 +14,7 @@
 }
 
 .selectContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $head-color;
-  height: 100px;
+  background-color: #fff;
 
   .selectInner {
     width: 100%;
@@ -26,6 +22,7 @@
     justify-content: space-between;
     padding: 0 20px 0 38px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 
     select {
       border-radius: 2px;

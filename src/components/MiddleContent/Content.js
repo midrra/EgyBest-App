@@ -12,8 +12,9 @@ const Content = ({ movies, name }) => {
 
   const scrollHandler = () => {
     let count = move + sliderWidth;
+    if (count >= 1836) count = 0;
+    console.log(count);
     setMove(count);
-    // if (count <= sliderWidth) setMove(0);
     console.log(move);
   };
 
@@ -26,7 +27,7 @@ const Content = ({ movies, name }) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <h1>{name}</h1>
-        <Link to="/AllMovies/2" className={styles.inner}>
+        <Link to="/AllMovies" className={styles.inner}>
           المزيد
           <span>
             <KeyboardDoubleArrowLeftIcon className={styles.arrow} />
@@ -46,24 +47,3 @@ const Content = ({ movies, name }) => {
 };
 
 export default Content;
-
-// return (
-//   <div className={styles.container}>
-//     <div className={styles.top}>
-//       <h1>{type}</h1>
-//       <div className={styles.inner} onClick={moreHandler}>
-//         المزيد
-//         <span>
-//           <KeyboardDoubleArrowLeftIcon className={styles.arrow} />
-//         </span>
-//       </div>
-//     </div>
-//     <MovieSketch movies={movies} move={move} />
-//     <div className={styles["scroll-arrow"]} onClick={scrollHandler}>
-//       <KeyboardArrowLeftIcon className={styles.keyboard} />
-//     </div>
-//   </div>
-// );
-// };
-
-// export default Content;

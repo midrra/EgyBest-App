@@ -27,7 +27,6 @@ const MovieSketch = (props) => {
           key={i}
           className={styles.info}
           onClick={() => {
-            console.log(movie);
             const type = movie.name || movie.title;
             navigate(`/movie/${type.split(" ").join("-")}`, {
               // navigate(`/movie/${movie.title.replace(/\s+/g, "-")}`, {

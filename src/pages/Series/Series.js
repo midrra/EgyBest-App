@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import StageArt from "../../components/StageArt/StageArt";
 import CenterialContainer from "../../components/CenteralContainer/CenteralContainer";
 import { seriesApi } from "../../components/Api/Api";
-import MainTypes from "../../components/MovieType/MainTypes";
+import MainTypes from "../../components/MovieType/MainType";
 import { seriesData } from "./SeriesData";
 
 const Series = () => {
@@ -17,6 +17,7 @@ const Series = () => {
     };
     series();
   }, [kind]);
+
   return (
     <CenterialContainer>
       <MainTypes

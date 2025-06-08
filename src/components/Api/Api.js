@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
+
+const API_KEY = "88170d99a195633ba877280a25be1735";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 export const topRated = async () => {
   const respond = await fetch(
@@ -80,3 +84,13 @@ export const movieInfo = async (title) => {
   const result = await respond.json();
   return result.results;
 };
+
+export const fetchEgyptianMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_origin_country: "EG",
+      language: "ar-EG", // Optional: returns title/overview in Arabic if available
+      sort_by: "popularity.desc",
+    },
+  });

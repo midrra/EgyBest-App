@@ -9,11 +9,11 @@ function MovieDetail({ movies, color }) {
     if (t.length > 20) {
       return "..." + t.split("").slice(0, 20).join("");
     }
-    // console.log(t);
     return t;
   };
 
   const detailHandler = (id) => {
+    console.log(id);
     navigate(`/movie/${id}`);
   };
 
@@ -23,7 +23,10 @@ function MovieDetail({ movies, color }) {
         <div
           className={styles.inner}
           key={i}
-          onClick={() => detailHandler(movie.name)}
+          onClick={() => {
+            const type = movie.name || movie.title;
+            detailHandler(type.split(" ").join("-"));
+          }}
         >
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <p>
