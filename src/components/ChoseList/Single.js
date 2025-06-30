@@ -15,16 +15,11 @@ const Single = ({
   const inter = useRef();
   const Navigate = useNavigate();
 
-  // const location = useLocation();
-  // console.log(location.pathname);
-
-  const checkHandler = () => {
+  const checkHandler = (e) => {
     setIcons(id);
     setFirst(true);
-    // console.log(inter.current.textContent);
     Navigate(inter.current.textContent);
   };
-  // console.log(reload);
 
   return (
     <div
@@ -39,16 +34,3 @@ const Single = ({
 };
 
 export default Single;
-// id={!first ? styles["def-fi"] : ""}
-
-// {
-// to={link?.type || "goodjob"}
-/* <div
-className={active ? styles.underContent : styles.content}
-id={!first ? styles["def-fi"] : ""}
-onClick={checkHandler}
->
-{logo}
-<li>{type}</li>
-</div> */
-// }

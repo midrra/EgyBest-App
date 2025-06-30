@@ -1,4 +1,5 @@
 @import "../../globalStyle/globalStyle.scss";
+
 %container {
   list-style: none;
   display: flex;
@@ -22,23 +23,67 @@
     }
   }
 }
+
 .category {
   position: absolute;
   left: 0;
   width: 310px;
   margin-top: 65px;
 
-  & {
-    @include tablet {
-      display: none;
-    }
+  @include tablet {
+    display: none;
   }
 
   .category-list {
     @extend %container;
   }
+
   .fixed-list {
     @extend %container;
     position: fixed;
+  }
+
+  // 🔁 New variant: relative positioning
+  &.relative {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+
+    @include large {
+      display: none;
+    }
+    @include tablet {
+      display: block;
+    }
+
+    .category-list {
+      justify-content: space-between;
+
+      li {
+        width: 166px;
+        margin: 0;
+        margin-top: 10px;
+
+        @include mobile {
+          width: 245px;
+        }
+        @include Extramobile {
+          width: 100%;
+        }
+      }
+
+      .innerList {
+        width: 174px;
+        margin: 0;
+        margin-top: 10px;
+
+        @include mobile {
+          width: 255px;
+        }
+        @include Extramobile {
+          width: 100%;
+        }
+      }
+    }
   }
 }

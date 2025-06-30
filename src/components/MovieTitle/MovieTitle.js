@@ -4,10 +4,13 @@ import SellIcon from "@mui/icons-material/Sell";
 import { useParams, useNavigate } from "react-router-dom";
 import { movieInfo } from "../Api/Api";
 import { MetroSpinner } from "react-spinners-kit";
+import CastList from "./CastList";
+import Categories from "../Categories/Categories";
 
 const MovieTitle = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [movieId, setmovieId] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -16,6 +19,7 @@ const MovieTitle = () => {
       const movieName = id;
       setLoading(true);
       const result = await movieInfo(movieName);
+      setmovieId(result[0].id || result.id);
       if (result.length === 0) {
         navigate("/404");
       }
@@ -113,6 +117,7 @@ const MovieTitle = () => {
               </div>
             </div>
           </div>
+          <CastList movieId={movieId} />
           <div className={styles.story}>
             <h1>القصة</h1>
             <div className={styles["inner-story"]}>
@@ -120,6 +125,7 @@ const MovieTitle = () => {
               <p>{movie?.overview}</p>
             </div>
           </div>
+          <Categories position="relative" full={true} />
         </div>
       </div>
     </Fragment>

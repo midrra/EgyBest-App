@@ -10,7 +10,6 @@ const MovieFilter = ({ filters }) => {
 
   const fetchMovies = async (filters) => {
     try {
-      console.log(filters, "isTV");
       const isTV = filters.type === "tv";
       const params = {
         api_key: API_KEY,
@@ -44,7 +43,6 @@ const MovieFilter = ({ filters }) => {
         : "https://api.themoviedb.org/3/discover/movie";
 
       const { data } = await axios.get(url, { params });
-      console.log(data, "the data response");
       setMovies(data.results);
     } catch (error) {
       console.error("Error fetching movies:", error);

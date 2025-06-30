@@ -1,89 +1,88 @@
-import React, { useState, useEffect, useContext } from "react";
-import styles from "./MiddleContent.module.scss";
+import React, { useState, useEffect, useReducer } from "react";
 import Content from "./Content";
+import Categories from "../Categories/Categories";
 import CenterialContainer from "../CenteralContainer/CenteralContainer";
-import { Mdata } from "../Api/Mdata";
-import { SecondData } from "../Api/SecondData";
-import contextData from "../../ContextData/ContextData";
-import Reducer from "../../ContextData/ContextData";
 import {
-  useSearchParams,
-  useLocation,
-  Navigate,
-  useParams,
-  Outlet,
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { items } from "../../ContextData/MovieId";
-import { animeApi } from "../Api/Api";
-import { trendingApi } from "../Api/Api";
-// import More from '../../pages/More';
-// import Allcontents from "./AllContents";
-// import { Route, Routes, Navigate, Redirect, Outlet,BrowserRouter } from "react-router-dom";
+  trendingApi,
+  ProgramMovies,
+  SportMovies,
+  StageMovies,
+  LibraryMovies,
+  AmericanMovies,
+  AnimeMovies,
+} from "../Api/Api";
 
-import Carousels from "./Carousels";
-import { LyricsRounded } from "@mui/icons-material";
+const initialState = {
+  trending: [],
+  anime: [],
+  programs: [],
+  sports: [],
+  stage: [],
+  library: [],
+  movies: [],
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_TRENDING":
+      return { ...state, trending: action.payload };
+    case "SET_ANIME":
+      return { ...state, anime: action.payload };
+    case "SET_PROGRAMS":
+      return { ...state, programs: action.payload };
+    case "SET_SPORTS":
+      return { ...state, sports: action.payload };
+    case "SET_STAGE":
+      return { ...state, stage: action.payload };
+    case "SET_LIBRARY":
+      return { ...state, library: action.payload };
+    case "SET_MOVIES":
+      return { ...state, movies: action.payload };
+    default:
+      return state;
+  }
+};
 
 const MiddleContent = (props) => {
-  // api key = 88170d99a195633ba877280a25be173588170d99a195633ba877280a25be1735
-  const [movies, setMovies] = useState([]);
-  const [anime, setAnime] = useState([]);
-  const [siteId, setsiteId] = useState();
-  const [check, setCheck] = useState(false);
-  const { id } = useParams();
-  // console.log(id);
-
-  const context = useContext(Reducer);
-
-  // const [link, setLink] = useHref();
-  // console.log(link);
-
-  // const location = useLocation();
-  // console.log(location.pathname);
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   // context.movies(Mdata, SecondData);
-  //   dispatch(items([...Mdata, ...SecondData]));
-  // }, []);
-
-  const [categoryType, setCategorytype] = useState([
-    {
-      id: 1,
-      title: "الاكثر مشاهدة",
-    },
-    { id: 2, title: "انمي" },
-    {
-      id: 3,
-      title: "افلام",
-    },
-    { id: 4, title: "الاكثر مشاهده" },
-    { id: 5, title: "دراما عربيه" },
-    {
-      id: 6,
-      title: "افلام سودانيه",
-    },
-    {
-      id: 7,
-      title: "مسلاسلات مصريه",
-    },
-  ]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    async function animeHandler() {
+    async function fetchData() {
       const trand = await trendingApi("day");
-      setMovies(trand);
+      dispatch({ type: "SET_TRENDING", payload: trand });
 
-      const result = await animeApi();
-      setAnime(result);
+      const movies = await AmericanMovies();
+      dispatch({ type: "SET_MOVIES", payload: movies.data.results });
+
+      const anime = await AnimeMovies();
+      dispatch({ type: "SET_ANIME", payload: anime.data.results });
+
+      const programs = await ProgramMovies();
+      dispatch({ type: "SET_PROGRAMS", payload: programs.data.results });
+
+      const sports = await SportMovies();
+      dispatch({ type: "SET_SPORTS", payload: sports.data.results });
+
+      const stage = await StageMovies();
+      dispatch({ type: "SET_STAGE", payload: stage.data.results });
+
+      const library = await LibraryMovies();
+      dispatch({ type: "SET_LIBRARY", payload: library.data.results });
     }
-    animeHandler();
+
+    fetchData();
   }, []);
 
   return (
     <CenterialContainer>
-      <Content name={"Trending"} movies={movies} />
-      <Content name={"Anime"} movies={movies} />
+      <Content name={"Trending"} movies={state.trending} />
+      <Content name={"movies"} movies={state.movies} />
+      <Content name={"Anime"} movies={state.anime} />
+      <Content name={"programs"} movies={state.programs} />
+      <Content name={"sports"} movies={state.sports} />
+      <Content name={"stage"} movies={state.stage} />
+      <Content name={"library"} movies={state.library} />
+      <Categories position="relative" ActiveWidth={true} full={true} />
     </CenterialContainer>
   );
 };

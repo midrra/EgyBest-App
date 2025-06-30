@@ -11,6 +11,7 @@ import { country } from "./MovieCatData.js";
 import MovieFilter from "./MovieFilter.js";
 import { MovieCatData } from "./MovieCatData.js";
 import CenterialContainer from "../CenteralContainer/CenteralContainer.js";
+import Categories from "../Categories/Categories.js";
 
 function MainType() {
   const [active, setActive] = useState(1);
@@ -18,8 +19,8 @@ function MainType() {
   const [filters, setFilters] = useState({
     year: "",
     language: "",
-    type: "", // e.g. 'movie' or 'tv'
-    accuracy: "", // Not directly available; maybe rating/popularity?
+    type: "",
+    accuracy: "",
     country: "",
     translation: "",
   });
@@ -57,6 +58,7 @@ function MainType() {
         </div>
         <MovieFilter filters={filters} />
       </div>
+      <Categories position="relative" ActiveWidth={true} full={true} />
     </CenterialContainer>
   );
 }

@@ -19,16 +19,32 @@ import EgyHome from "./pages/EgyHome";
 import MovieCat from "./pages/MovieCat.js";
 import Trending from "./pages/Trending";
 import Anime from "./pages/ِAnime/Anime.js";
-import Programs from "./pages/Programs";
-import Sport from "./pages/Sport";
-import Library from "./pages/Library";
+import Sports from "./pages/Sports/Sports.js";
+import Programs from "./pages/Programs/Programs.js";
+import Library from "./pages/Library/Library.js";
 import More from "./pages/More";
 import PagenotFound from "./components/PagenotFound/PagenotFound";
-import Books from "./components/Books/Books.js";
 import Login from "./pages/login/Login.js";
 import Join from "./pages/Join/Join.js";
 import Series from "./pages/Series/Series.js";
-import EgpyptionMovies from "./pages/EgpyptionMovies.js";
+import Egyptian from "./pages/Egyptian/Egyptian.js";
+import Korean from "./pages/Korean/Korean.js";
+import Japanes from "./pages/Japanes/Japanes.js";
+import Horror from "./pages/Horror/Horror.js";
+import Komedy from "./pages/Komedy/Komedy.js";
+import American from "./pages/American/American.js";
+import TranslatedGermanMovies from "./pages/TranslatedGermanMovies/TranslatedGermanMovies.js";
+import Arabic from "./pages/Arabic/Arabic.js";
+import Indian from "./pages/Indian/Indian.js";
+import Chinese from "./pages/Chinese/Chinese.js";
+import Action from "./pages/Action/Action.js";
+import Romance from "./pages/Romance/Romance.js";
+import ScienceFiction from "./pages/ScienceFiction/ScienceFiction.js";
+import Cartoon from "./pages/Cartoon/Cartoon.js";
+import War from "./pages/War/War.js";
+import Documentary from "./pages/Documentary/Documentary.js";
+import EgybestApp from "./pages/EgybestApp/EgybestApp.js";
+import Stage from "./pages/Stage/Stage.js";
 
 function App() {
   // const auth = useSelector((state) => state.MovieId.movieOb);
@@ -47,13 +63,36 @@ function App() {
           <Route path={"trending"} element={<Trending />} />
           <Route path={"AllMovies"} element={<More />} />
           <Route path={"movies"} element={<MovieCat />} />
-          <Route path={"books"} element={<Books />} />
           <Route path={"series"} element={<Series />} />
           <Route path={"Anime"} element={<Anime />} />
-          <Route path={"pro"} element={<Programs />} />
-          <Route path={"lib"} element={<Library />} />
-          <Route path={"المصارعه الحره"} element={<Sport />} />
-          <Route path={"افلام-مصريه"} element={<EgpyptionMovies />} />
+          <Route path={"programs"} element={<Programs />} />
+          <Route path={"stage"} element={<Stage />} />
+          <Route path={"library"} element={<Library />} />
+          <Route path={"sports"} element={<Sports />} />
+          <Route path={"افلام-مصرية"} element={<Egyptian />} />
+          <Route path={"افلام-كورية"} element={<Korean />} />
+          <Route path={"افلام-يابانية"} element={<Japanes />} />
+          <Route path={"افلام-رعب"} element={<Horror />} />
+          <Route path={"افلام-كوميدية"} element={<Komedy />} />
+          <Route path={"افلام-امريكية"} element={<American />} />
+          <Route path={"افلام-مترجمة"} element={<TranslatedGermanMovies />} />
+          <Route path={"افلام-عربية"} element={<Arabic />} />
+          <Route path={"افلام-هندية"} element={<Indian />} />
+          <Route path={"افلام-صينية"} element={<Chinese />} />
+          <Route path={"افلام-اكشن"} element={<Action />} />
+          <Route path={"افلام-رومانسية"} element={<Romance />} />
+          <Route path={"افلام-خيال-علمي"} element={<ScienceFiction />} />
+          <Route path={"افلام-كرتون"} element={<Cartoon />} />
+          <Route path={"افلام-حرب"} element={<War />} />
+          <Route path={"افلام-وثائقية"} element={<Documentary />} />
+          <Route path={"ايجي-بست"} element={<EgyHome />} />
+          <Route path={"ايجي-بست"} element={<EgyHome />} />
+          <Route path={"ايجي-بست-الجديد"} element={<EgyHome />} />
+          <Route path={"ايجي-بست-البديل"} element={<EgyHome />} />
+          <Route path={"موقع-ايجي-بست"} element={<EgyHome />} />
+          <Route path={"egybest-2"} element={<EgyHome />} />
+          <Route path={"egybest-app"} element={<EgybestApp />} />
+
           <Route path={"*"} element={<PagenotFound />} />
         </Route>
         <Route path={"/join"} element={<Join />} />

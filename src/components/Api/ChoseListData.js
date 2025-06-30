@@ -58,7 +58,7 @@ export const ChoseListData = [
   {
     id: "9",
     // type: "مكتبتي",
-    type: "libray",
+    type: "library",
     logo: <LocalMoviesIcon />,
   },
 ];

@@ -1,0 +1,30 @@
+@import "../../globalStyle/globalStyle.scss";
+
+.spinner {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 101;
+}
+.spinner::after {
+  content: "";
+  width: 52%;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 29%;
+  z-index: -100;
+  @include desktop {
+    width: 47%;
+    left: 33%;
+  }
+  @include tablet {
+    width: 73%;
+    left: 0;
+  }
+  @include tablet {
+    width: 100%;
+    left: 0;
+  }
+}

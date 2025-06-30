@@ -85,12 +85,216 @@ export const movieInfo = async (title) => {
   return result.results;
 };
 
-export const fetchEgyptianMovies = () =>
+export const EgyptianMovies = () =>
   axios.get(`${BASE_URL}/discover/movie`, {
     params: {
       api_key: API_KEY,
       with_origin_country: "EG",
       language: "ar-EG", // Optional: returns title/overview in Arabic if available
       sort_by: "popularity.desc",
+    },
+  });
+
+export const koreanMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_original_language: "ko", // Korean movies
+      with_genres: 18,
+      language: "en-US", // Response in English
+      sort_by: "popularity.desc",
+      certification_country: "KR",
+      "certification.lte": "15",
+    },
+  });
+
+export const JapaneseMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_original_language: "ja",
+      // with_genres: 35,
+      language: "en-US",
+      sort_by: "popularity.desc",
+      certification_country: "JP",
+      "certification.lte": "PG12",
+    },
+  });
+
+export const HorrorMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 27,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const KomedyMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 35,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const AmericanMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_original_language: "en",
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const TranGermanMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_original_language: "de",
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const ArabicMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_origin_country: "EG",
+      language: "ar-EG", // Optional: returns title/overview in Arabic if available
+      sort_by: "popularity.desc",
+      page: 2,
+    },
+  });
+
+export const InidanMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_original_language: "hi",
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const ChineseMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_original_language: "zh",
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const ActionMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 28,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const RomanceMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 10749,
+      language: "en-US",
+      sort_by: "popularity.desc",
+      page: 4,
+    },
+  });
+
+export const ScienceFictionMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 878,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const CartoonMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 16,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+export const WarMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 10752,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const DocumentaryMovies = () =>
+  axios.get(`${BASE_URL}/discover/movie`, {
+    params: {
+      api_key: API_KEY,
+      with_genres: 99,
+      language: "en-US",
+      sort_by: "popularity.desc",
+    },
+  });
+
+export const SportMovies = () =>
+  axios.get(`${BASE_URL}/search/tv`, {
+    params: {
+      api_key: API_KEY,
+      query: "wwe",
+      language: "en-US",
+    },
+  });
+
+export const ProgramMovies = () =>
+  axios.get(`${BASE_URL}/discover/tv`, {
+    params: {
+      api_key: API_KEY,
+      sort_by: "popularity.desc",
+      language: "en-US",
+    },
+  });
+
+export const StageMovies = () =>
+  axios.get(`${BASE_URL}/search/movie`, {
+    params: {
+      api_key: API_KEY,
+      query: "shakespeare",
+      language: "en-US",
+    },
+  });
+
+export const LibraryMovies = () =>
+  axios.get(`${BASE_URL}/search/movie`, {
+    params: {
+      api_key: API_KEY,
+      query: "librarian",
+      language: "en-US",
+    },
+  });
+
+export const AnimeMovies = () =>
+  axios.get("https://api.themoviedb.org/3/discover/tv", {
+    params: {
+      api_key: API_KEY,
+      with_genres: 16,
+      with_original_language: "ja",
+      sort_by: "popularity.desc",
+      page: 1,
     },
   });

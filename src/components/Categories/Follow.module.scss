@@ -59,4 +59,26 @@
       }
     }
   }
+
+  &.full {
+    width: 100%;
+    margin: 0;
+    margin-top: 5px;
+
+    h1 {
+      margin-top: 10px;
+    }
+
+    .innerContent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      gap: 18px;
+
+      .fol-fa {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

@@ -1,13 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "../Categories/Categories.module.scss";
 
 const CategoryList = (props) => {
   const navigate = useNavigate();
   const clickHandler = (e) => {
-    console.log(props.type, "every thing is ok");
     navigate(`/${props.type.split(" ").join("-")}`);
   };
-  return <li onClick={clickHandler}>{props.type}</li>;
+  return (
+    <li
+      className={props.ActiveWidth === true ? styles.innerList : ""}
+      onClick={clickHandler}
+    >
+      {props.type}
+    </li>
+  );
 };
 
 export default CategoryList;

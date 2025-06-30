@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CenterialContainer from "../CenteralContainer/CenteralContainer";
+import Categories from "../Categories/Categories";
 import styles from "./Trends.module.scss";
 
 import ChooseHeadicon from "./ChooseHeadicon";
@@ -88,8 +89,8 @@ const Trending = () => {
           </div>
         </div>
         <MovieDetail movies={movies} />
-        {console.log(movies, "movies in trends")}
       </div>
+      <Categories position="relative" ActiveWidth={true} full={true} />
     </CenterialContainer>
   );
 };
