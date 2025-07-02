@@ -1,8 +1,9 @@
 import React, { useState, useEffect, Fragment, useCallback } from "react";
 import styles from "./GiveMore.module.scss";
 import InfiniteScroll from "react-infinite-scroll-component";
-import MovieDetail from "../MovieDetail/MovieDetail";
+import MovieDetail from "../../components/MovieDetail/MovieDetail";
 import { MetroSpinner } from "react-spinners-kit";
+import CenterialContainer from "../../components/CenteralContainer/CenteralContainer";
 
 const GiveMore = () => {
   const [movies, setMovies] = useState([]);
@@ -37,7 +38,7 @@ const GiveMore = () => {
   }, []);
 
   return (
-    <Fragment>
+    <CenterialContainer>
       <InfiniteScroll
         dataLength={movies.length}
         next={movieItmes}
@@ -57,7 +58,7 @@ const GiveMore = () => {
       >
         <MovieDetail movies={movies} />
       </InfiniteScroll>
-    </Fragment>
+    </CenterialContainer>
   );
 };
 

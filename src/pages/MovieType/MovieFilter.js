@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MovieDetail from "../MovieDetail/MovieDetail";
+import MovieDetail from "../../components/MovieDetail/MovieDetail";
 import axios from "axios";
 
 const API_KEY = "88170d99a195633ba877280a25be1735";

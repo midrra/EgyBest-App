@@ -4,8 +4,9 @@ import { ChoseListData } from "../Api/ChoseListData";
 import Single from "./Single";
 import Socail from "../ChoseList/Social";
 import { useLocation } from "react-router-dom";
+import clsx from "clsx";
 
-const ChoseList = () => {
+const ChoseList = ({ choice }) => {
   const [icons, setIcons] = useState(false);
   const [first, setFirst] = useState(false);
 
@@ -15,7 +16,7 @@ const ChoseList = () => {
   );
 
   return (
-    <div className={styles.choseList}>
+    <div className={clsx(styles.choseList, styles[`${choice}`])}>
       <ul>
         {ChoseListData.map((item) => (
           <Single
@@ -30,7 +31,7 @@ const ChoseList = () => {
           />
         ))}
       </ul>
-      <Socail />
+      <Socail choice={choice} />
     </div>
   );
 };

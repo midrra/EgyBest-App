@@ -2,12 +2,11 @@ import React from "react";
 import styles from "./Social.module.scss";
 import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { useNavigate } from "react-router-dom";
+import clsx from "clsx";
 
-const Social = () => {
-  const navigate = useNavigate();
+const Social = ({ choice }) => {
   return (
-    <div className={styles.social}>
+    <div className={clsx(styles.social, styles[`${choice}`])}>
       <div className={styles["fa-icon"]}>
         <FacebookTwoToneIcon
           onClick={() => {

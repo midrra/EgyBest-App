@@ -10,8 +10,8 @@ import { translation } from "./MovieCatData.js";
 import { country } from "./MovieCatData.js";
 import MovieFilter from "./MovieFilter.js";
 import { MovieCatData } from "./MovieCatData.js";
-import CenterialContainer from "../CenteralContainer/CenteralContainer.js";
-import Categories from "../Categories/Categories.js";
+import CenterialContainer from "../../components/CenteralContainer/CenteralContainer.js";
+import Categories from "../../components/Categories/Categories.js";
 
 function MainType() {
   const [active, setActive] = useState(1);

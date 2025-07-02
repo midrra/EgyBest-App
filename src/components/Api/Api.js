@@ -298,3 +298,22 @@ export const AnimeMovies = () =>
       page: 1,
     },
   });
+
+export const getTrailer = async (movieId, type) => {
+  const res = await axios.get(`${BASE_URL}/${type}/${movieId}/videos`, {
+    params: {
+      api_key: API_KEY,
+      language: "en-US",
+    },
+  });
+  return res.data;
+};
+
+export const castList = async (movieId) => {
+  const res = await axios.get(`${BASE_URL}/movie/${movieId}/credits`, {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+  return res.data.cast;
+};

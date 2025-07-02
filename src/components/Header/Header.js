@@ -1,32 +1,30 @@
-import react, { useState } from "react";
+import react, { useRef } from "react";
 import styles from "./Header.module.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import Menu from "./Menu";
+import { useSelector, useDispatch } from "react-redux";
 import MovieSearch from "../SearchBar/SearchBar";
+import { toggleMenu } from "../../ContextData/MenuSlice";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(true);
+  const hamburgerRef = useRef(null);
+
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.menu.isOpen);
+  const menuRef = useRef();
 
   return (
     <Container className={styles.container}>
       <div className={styles["right-head"]}>
         <div className={styles.logo}>
-          <span>Egy</span>Best
+          <Link to="/" className="text-decoration-none">
+            <span>Egy</span>Best
+          </Link>
         </div>
         <div>
           <MovieSearch />
-          {/* <input
-            type="search"
-            className={styles["input-header"]}
-            placeholder="ابحث عن فيلم او مسلسل او ممثل..."
-            onChange={"handleChange"}
-            // style={{
-            //   direction: direction,
-            //   textAlign: direction === "ltr" ? "left" : "right",
-            // }}
-          /> */}
         </div>
       </div>
       <div className={styles["left-head"]}>
@@ -39,14 +37,15 @@ const Header = () => {
         </Link>
       </div>
       <div
-        className={menuOpen ? styles.hamburger : styles.active}
-        onClick={() => setMenuOpen(!menuOpen)}
+        className={isOpen ? styles.hamburger : styles.active}
+        onClick={() => dispatch(toggleMenu())}
+        ref={hamburgerRef}
       >
         <span className="line1"></span>
         <span className="line2"></span>
         <span className="line3"></span>
       </div>
-      <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Menu hamburgerRef={hamburgerRef} />
     </Container>
   );
 };

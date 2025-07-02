@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import CenterialContainer from "../CenteralContainer/CenteralContainer";
-import Categories from "../Categories/Categories";
+import CenterialContainer from "../../components/CenteralContainer/CenteralContainer";
+import Categories from "../../components/Categories/Categories";
 import styles from "./Trends.module.scss";
 
 import ChooseHeadicon from "./ChooseHeadicon";
 import { headTrends } from "./TrendsData";
 import { MetroSpinner } from "react-spinners-kit";
 
-import MovieDetail from "../MovieDetail/MovieDetail";
+import MovieDetail from "../../components/MovieDetail/MovieDetail";
 const Trending = () => {
   const [trend, setTrend] = useState(headTrends[0].id);
   const [title, setTitle] = useState("");

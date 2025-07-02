@@ -20,6 +20,16 @@
   left: 50%;
   top: 50%;
   z-index: 101;
+
+  @include desktop {
+    left: 53%;
+  }
+  @include tablet {
+    left: 47%;
+  }
+  @include mobile {
+    left: 45%;
+  }
 }
 .spinner::after {
   content: "";

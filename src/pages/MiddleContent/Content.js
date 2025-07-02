@@ -3,7 +3,7 @@ import styles from "./Content.module.scss";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { Link } from "react-router-dom";
-import MovieSketch from "../MovieSketch/MovieSketch";
+import MovieSketch from "../../components/MovieSketch/MovieSketch";
 
 const Content = ({ movies, name }) => {
   const [move, setMove] = useState(0);

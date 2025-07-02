@@ -5,9 +5,7 @@ import Categories from "../../components/Categories/Categories";
 import ChoseList from "../../components/ChoseList/ChoseList";
 import Title from "../../components/Title/Title";
 import { Outlet } from "react-router-dom";
-import MovieSearch from "../../components/SearchBar/SearchBar";
-// import MovieFilter from "./MovieFilter";
-import CenteralContainer from "../../components/CenteralContainer/CenteralContainer";
+
 const Home = () => {
   return (
     <Fragment>

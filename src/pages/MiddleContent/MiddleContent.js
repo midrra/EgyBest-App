@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import Content from "./Content";
-import Categories from "../Categories/Categories";
-import CenterialContainer from "../CenteralContainer/CenteralContainer";
+import Categories from "../../components/Categories/Categories";
+import CenterialContainer from "../../components/CenteralContainer/CenteralContainer";
 import {
   trendingApi,
   ProgramMovies,
@@ -10,7 +10,7 @@ import {
   LibraryMovies,
   AmericanMovies,
   AnimeMovies,
-} from "../Api/Api";
+} from "../../components/Api/Api";
 
 const initialState = {
   trending: [],

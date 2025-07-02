@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./SearchBar.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { closeMenu } from "../../ContextData/MenuSlice";
 
 const API_KEY = "88170d99a195633ba877280a25be1735";
 const BASE_URL = "https://api.themoviedb.org/3";
 
-const MovieSearch = () => {
+const MovieSearch = ({ className, showStyle }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,6 +16,7 @@ const MovieSearch = () => {
   const [showResults, setShowResults] = useState(false);
   const navigate = useNavigate();
   const containerRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -78,6 +81,7 @@ const MovieSearch = () => {
     setShowResults(false);
   };
 
+  const finalClass = `${styles.input} ${styles[className]} || "")`;
   return (
     <div className={styles.container}>
       <div className={styles.miniContainer} ref={containerRef}>
@@ -86,27 +90,21 @@ const MovieSearch = () => {
           placeholder="ابحث عن فيلم او مسلسل او ممثل..."
           value={query}
           onChange={handleChange}
-          className={styles.input}
+          className={finalClass}
           style={{
             direction: direction,
             textAlign: direction === "ltr" ? "left" : "right",
           }}
         />
         {showResults && (
-          <div className={styles.resultsContainer}>
+          <div className={`${styles.resultsContainer} ${styles[showStyle]}`}>
             {loading && (
-              <p
-                className="text-center fw-bold"
-                style={{ direction: "ltr"}}
-              >
+              <p className="text-center fw-bold" style={{ direction: "ltr" }}>
                 Loading...
               </p>
             )}
             {!loading && message && (
-              <p
-                className="text-center fw-bold"
-                style={{ direction: "ltr"}}
-              >
+              <p className="text-center fw-bold" style={{ direction: "ltr" }}>
                 {message}
               </p>
             )}
@@ -115,7 +113,10 @@ const MovieSearch = () => {
                 <div
                   key={movie.id}
                   className={styles.card}
-                  onClick={() => movieHandler(movie.title.split(" ").join("-"))}
+                  onClick={() => {
+                    movieHandler(movie.title.split(" ").join("-"));
+                    dispatch(closeMenu());
+                  }}
                 >
                   {movie.poster_path ? (
                     <img

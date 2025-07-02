@@ -2,7 +2,6 @@ import React, { useContext, Fragment } from "react";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./App.module.scss";
-import MiddleContent from "./components/MiddleContent/MiddleContent";
 
 import {
   Route,
@@ -12,17 +11,17 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import Moviedetail from "./pages/Moviedetail.js";
+import MovieTitle from "./pages/MovieTitle/MovieTitle";
 import Reducer from "./ContextData/ContextData";
 import Home from "./components/Home/Home";
-import EgyHome from "./pages/EgyHome";
-import MovieCat from "./pages/MovieCat.js";
-import Trending from "./pages/Trending";
+import MiddleContent from "./pages/MiddleContent/MiddleContent.js";
+import MovieType from "./pages/MovieType/MainType.js";
+import Trending from "./pages/Trending/Trends.js";
 import Anime from "./pages/ِAnime/Anime.js";
 import Sports from "./pages/Sports/Sports.js";
 import Programs from "./pages/Programs/Programs.js";
 import Library from "./pages/Library/Library.js";
-import More from "./pages/More";
+import More from "./pages/More/GiveMore.js";
 import PagenotFound from "./components/PagenotFound/PagenotFound";
 import Login from "./pages/login/Login.js";
 import Join from "./pages/Join/Join.js";
@@ -58,11 +57,11 @@ function App() {
       <Fragment>
         <Route path="/" element={<Home />}>
           <Route index element={<MiddleContent />} />
-          <Route path={`movie/:id`} element={<Moviedetail />} />
-          <Route path={"egybest"} element={<EgyHome />} />
+          <Route path={`movie/:id`} element={<MovieTitle />} />
+          <Route path={"egybest"} element={<MiddleContent />} />
           <Route path={"trending"} element={<Trending />} />
           <Route path={"AllMovies"} element={<More />} />
-          <Route path={"movies"} element={<MovieCat />} />
+          <Route path={"movies"} element={<MovieType />} />
           <Route path={"series"} element={<Series />} />
           <Route path={"Anime"} element={<Anime />} />
           <Route path={"programs"} element={<Programs />} />
@@ -85,12 +84,12 @@ function App() {
           <Route path={"افلام-كرتون"} element={<Cartoon />} />
           <Route path={"افلام-حرب"} element={<War />} />
           <Route path={"افلام-وثائقية"} element={<Documentary />} />
-          <Route path={"ايجي-بست"} element={<EgyHome />} />
-          <Route path={"ايجي-بست"} element={<EgyHome />} />
-          <Route path={"ايجي-بست-الجديد"} element={<EgyHome />} />
-          <Route path={"ايجي-بست-البديل"} element={<EgyHome />} />
-          <Route path={"موقع-ايجي-بست"} element={<EgyHome />} />
-          <Route path={"egybest-2"} element={<EgyHome />} />
+          <Route path={"ايجي-بست"} element={<MiddleContent />} />
+          <Route path={"ايجي-بست"} element={<MiddleContent />} />
+          <Route path={"ايجي-بست-الجديد"} element={<MiddleContent />} />
+          <Route path={"ايجي-بست-البديل"} element={<MiddleContent />} />
+          <Route path={"موقع-ايجي-بست"} element={<MiddleContent />} />
+          <Route path={"egybest-2"} element={<MiddleContent />} />
           <Route path={"egybest-app"} element={<EgybestApp />} />
 
           <Route path={"*"} element={<PagenotFound />} />

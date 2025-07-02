@@ -1,19 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-const API_KEY = "88170d99a195633ba877280a25be1735";
-const BASE_URL = "https://api.themoviedb.org/3";
-// const movieId = 12345; // Replace with actual movie ID
+import { castList } from "../../components/Api/Api";
 
 const CastList = ({ movieId }) => {
   const [cast, setCast] = useState([]);
-  console.log(movieId, "from castlelist");
 
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`)
+    castList(movieId)
       .then((res) => {
-        setCast(res.data.cast);
+        setCast(res);
       })
       .catch((err) => console.error(err));
   }, [movieId]);

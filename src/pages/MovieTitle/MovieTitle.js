@@ -2,15 +2,18 @@ import React, { Fragment, useEffect, useState } from "react";
 import styles from "./MovieTitle.module.scss";
 import SellIcon from "@mui/icons-material/Sell";
 import { useParams, useNavigate } from "react-router-dom";
-import { movieInfo } from "../Api/Api";
+import { movieInfo } from "../../components/Api/Api";
 import { MetroSpinner } from "react-spinners-kit";
 import CastList from "./CastList";
-import Categories from "../Categories/Categories";
+import Categories from "../../components/Categories/Categories";
+import Trailer from "./Trailer";
+import CenterialContainer from "../../components/CenteralContainer/CenteralContainer";
 
 const MovieTitle = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [movieId, setmovieId] = useState("");
+  const [mediaType, setMediaType] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -20,6 +23,7 @@ const MovieTitle = () => {
       setLoading(true);
       const result = await movieInfo(movieName);
       setmovieId(result[0].id || result.id);
+      setMediaType(result[0].media_type || result.media_type);
       if (result.length === 0) {
         navigate("/404");
       }
@@ -36,9 +40,10 @@ const MovieTitle = () => {
     }
     detail();
   }, [id, navigate]);
+  console.log("The name of ", movieId);
 
   return (
-    <Fragment>
+    <CenterialContainer>
       <div className={loading ? styles.spinner : ""}>
         <MetroSpinner size={80} color="green" loading={loading} />
       </div>
@@ -91,6 +96,7 @@ const MovieTitle = () => {
               في السينما. لا يوجد تاريخ محدد لاصدار نسخة الجودة العالية.
             </p>
           </div>
+          <Trailer movieId={movieId} mediaType={mediaType} />
           <div className={styles["movie-rate"]}>
             <h1>تقييم المشاهدين</h1>
             <div className={styles["inner-rate"]}>
@@ -128,7 +134,7 @@ const MovieTitle = () => {
           <Categories position="relative" full={true} />
         </div>
       </div>
-    </Fragment>
+    </CenterialContainer>
   );
 };
 
