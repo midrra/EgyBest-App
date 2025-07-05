@@ -4,22 +4,20 @@
   position: absolute;
   top: 70px;
   right: 180px;
-  width: 835px;
 
   & {
     @include large {
       right: 105px;
     }
     @include desktop {
-      right: 0;
+      right: 243px;
     }
     @include tablet {
-      right: 210px;
-      width: 70%;
+      right: 223px;
+      left: 0;
     }
     @include mobile {
-      right: 83px;
-      width: 70%;
+      right: 0;
     }
   }
 

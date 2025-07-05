@@ -8,62 +8,55 @@ import { headTrends } from "./TrendsData";
 import { MetroSpinner } from "react-spinners-kit";
 
 import MovieDetail from "../../components/MovieDetail/MovieDetail";
+import Pagination from "../../components/Pagination/Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategoryData } from "../../ContextData/Page";
+
 const Trending = () => {
   const [trend, setTrend] = useState(headTrends[0].id);
   const [title, setTitle] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const category = "trending";
 
-  const topMovies = async () => {
-    setMovies([]);
-    setLoading(true);
-    const respond = await fetch(
-      `https://api.themoviedb.org/3/tv/top_rated?api_key=88170d99a195633ba877280a25be1735`
-    );
-    const result = await respond.json();
-    setLoading(false);
-    return result.results;
-  };
+  const dispatch = useDispatch();
 
-  const Toprend = async (time) => {
-    setMovies([]);
-    setLoading(true);
-    const respond = await fetch(
-      `https://api.themoviedb.org/3/trending/all/${time}?api_key=88170d99a195633ba877280a25be1735`
-    );
-    const result = await respond.json();
-    setLoading(false);
-    return result.results;
-  };
+  const { data, totalPages, loading } = useSelector(
+    (state) => state.movies[category]
+  );
 
   useEffect(() => {
     async function egyApi() {
       switch (title) {
         case headTrends[0].title:
-          const topResult2 = await topMovies();
-          setMovies(topResult2);
+          dispatch(
+            fetchCategoryData({ category: category, time: "day", page: 1 })
+          );
           break;
         case headTrends[1].title:
-          const resultDay = await Toprend("day");
-          setMovies(resultDay);
+          dispatch(
+            fetchCategoryData({ category: category, time: "week", page: 1 })
+          );
           break;
         case headTrends[2].title:
-          const weekResult = await Toprend("week");
-          setMovies(weekResult);
+          dispatch(
+            fetchCategoryData({ category: category, time: "day", page: 1 })
+          );
           break;
         case headTrends[3].title:
-          const dayResult = await Toprend("day");
-          setMovies(dayResult);
+          dispatch(
+            fetchCategoryData({ category: category, time: "week", page: 1 })
+          );
           break;
         default:
-          let topResult = await topMovies();
-          setMovies(topResult);
+          dispatch(
+            fetchCategoryData({ category: category, time: "day", page: 1 })
+          );
           break;
       }
     }
     egyApi();
-  }, [title]);
+  }, [title, dispatch]);
 
+  // console.log("From trend", title, trend);
   return (
     <CenterialContainer>
       <div className={styles.container}>
@@ -83,12 +76,19 @@ const Trending = () => {
           </div>
         </div>
         <hr />
-        <div className={styles.spinnerContainer}>
-          <div className="spinner">
-            <MetroSpinner size={40} color="green" loading={loading} />
+
+        {loading ? (
+          <div className={styles.spinnerContainer}>
+            <div className="spinner">
+              <MetroSpinner size={40} color="green" loading={loading} />
+            </div>
           </div>
-        </div>
-        <MovieDetail movies={movies} />
+        ) : (
+          <>
+            <MovieDetail movies={data?.results} />
+            <Pagination category={category} totalPages={totalPages} />
+          </>
+        )}
       </div>
       <Categories position="relative" ActiveWidth={true} full={true} />
     </CenterialContainer>

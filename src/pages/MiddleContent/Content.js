@@ -13,9 +13,7 @@ const Content = ({ movies, name }) => {
   const scrollHandler = () => {
     let count = move + sliderWidth;
     if (count >= 1836) count = 0;
-    console.log(count);
     setMove(count);
-    console.log(move);
   };
 
   const styledInfo = {

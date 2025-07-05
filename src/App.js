@@ -5,7 +5,6 @@ import styles from "./App.module.scss";
 
 import {
   Route,
-  Outlet,
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
@@ -46,12 +45,6 @@ import EgybestApp from "./pages/EgybestApp/EgybestApp.js";
 import Stage from "./pages/Stage/Stage.js";
 
 function App() {
-  // const auth = useSelector((state) => state.MovieId.movieOb);
-  // const auther = useSelector((state) => state.MovieId.final);
-  const contex = useContext(Reducer);
-  // console.log(auth);
-  // console.log(auther);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Fragment>
@@ -90,6 +83,7 @@ function App() {
           <Route path={"ايجي-بست-البديل"} element={<MiddleContent />} />
           <Route path={"موقع-ايجي-بست"} element={<MiddleContent />} />
           <Route path={"egybest-2"} element={<MiddleContent />} />
+          <Route path={"EgyBest-vip"} element={<MiddleContent />} />
           <Route path={"egybest-app"} element={<EgybestApp />} />
 
           <Route path={"*"} element={<PagenotFound />} />

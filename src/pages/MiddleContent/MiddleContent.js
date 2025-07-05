@@ -45,29 +45,30 @@ const reducer = (state, action) => {
 
 const MiddleContent = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const page = 1;
 
   useEffect(() => {
     async function fetchData() {
-      const trand = await trendingApi("day");
-      dispatch({ type: "SET_TRENDING", payload: trand });
+      const trend = await trendingApi(page, "day");
+      dispatch({ type: "SET_TRENDING", payload: trend.results });
 
-      const movies = await AmericanMovies();
-      dispatch({ type: "SET_MOVIES", payload: movies.data.results });
+      const movies = await AmericanMovies(page);
+      dispatch({ type: "SET_MOVIES", payload: movies.results });
 
-      const anime = await AnimeMovies();
-      dispatch({ type: "SET_ANIME", payload: anime.data.results });
+      const anime = await AnimeMovies(page);
+      dispatch({ type: "SET_ANIME", payload: anime.results });
 
-      const programs = await ProgramMovies();
-      dispatch({ type: "SET_PROGRAMS", payload: programs.data.results });
+      const programs = await ProgramMovies(page);
+      dispatch({ type: "SET_PROGRAMS", payload: programs.results });
 
-      const sports = await SportMovies();
-      dispatch({ type: "SET_SPORTS", payload: sports.data.results });
+      const sports = await SportMovies(page);
+      dispatch({ type: "SET_SPORTS", payload: sports.results });
 
-      const stage = await StageMovies();
-      dispatch({ type: "SET_STAGE", payload: stage.data.results });
+      const stage = await StageMovies(page);
+      dispatch({ type: "SET_STAGE", payload: stage.results });
 
-      const library = await LibraryMovies();
-      dispatch({ type: "SET_LIBRARY", payload: library.data.results });
+      const library = await LibraryMovies(page);
+      dispatch({ type: "SET_LIBRARY", payload: library.results });
     }
 
     fetchData();

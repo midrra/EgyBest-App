@@ -4,8 +4,6 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Carousels from "../login/Carousels";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import LockIcon from "@mui/icons-material/Lock";
-// import { ConnectingAirportsOutlined } from "@mui/icons-material"
 import styles from "./Join.module.scss";
 
 function Join() {
@@ -32,6 +30,7 @@ function Join() {
             })}
             onSubmit={(values) => {
               const auth = getAuth();
+
               createUserWithEmailAndPassword(
                 auth,
                 values.email,
@@ -40,6 +39,7 @@ function Join() {
                 .then((userCredential) => {
                   // Signed up
                   const user = userCredential.user;
+                  console.log("User signed up:", userCredential);
                   navigate("/");
                 })
                 .catch((error) => {
@@ -101,15 +101,11 @@ function Join() {
                   value={values.password}
                   placeholder="Password"
                 />
-                {/* <LockIcon
-                  className={styles.lock}
-                  onClick={() => setshowPassword((prev) => !prev)}
-                /> */}
                 {touched.password && errors.password && (
                   <p className={styles.error}>{errors.password}</p>
                 )}
 
-                <button type="submit">Signin</button>
+                <button type="submit">Sign Up</button>
                 <p className={styles.login}>
                   You already have an account <a href="/login">login</a>
                 </p>

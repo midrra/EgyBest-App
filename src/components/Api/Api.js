@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import axios from "axios";
 
 const API_KEY = "88170d99a195633ba877280a25be1735";
@@ -12,44 +11,12 @@ export const topRated = async () => {
   return result.results;
 };
 
-export const trendingApi = async (time) => {
+export const trendingApi = async (page, time) => {
   const respond = await fetch(
-    `https://api.themoviedb.org/3/trending/all/${time}?api_key=88170d99a195633ba877280a25be1735`
+    `https://api.themoviedb.org/3/trending/all/${time}?api_key=${API_KEY}&language=en-US&page=${page}`
   );
   const result = await respond.json();
-  return result.results;
-};
-
-export const animeApi = async () => {
-  const url =
-    "https://api.themoviedb.org/3/discover/tv?air_date.gte=1999&include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&timezone=ja";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODE3MGQ5OWExOTU2MzNiYTg3NzI4MGEyNWJlMTczNSIsIm5iZiI6MTcyOTA0MjkzNS44NDc5NzgsInN1YiI6IjYyYTRjZDIxMjU1ZGJhMDA0ZjJlYzU0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AnopcZYx11P40-dJ2H15rv1Ox9TqJgol04GCEnY2wkk",
-    },
-  };
-
-  const respond = await fetch(url, options);
-  const result = await respond.json();
-  return result.results;
-};
-
-export const seriesApi = async () => {
-  const url = "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODE3MGQ5OWExOTU2MzNiYTg3NzI4MGEyNWJlMTczNSIsIm5iZiI6MTcyOTA0MjkzNS44NDc5NzgsInN1YiI6IjYyYTRjZDIxMjU1ZGJhMDA0ZjJlYzU0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AnopcZYx11P40-dJ2H15rv1Ox9TqJgol04GCEnY2wkk",
-    },
-  };
-  const respond = await fetch(url, options);
-  const result = await respond.json();
-  return result.results;
+  return result;
 };
 
 export const moviesApi = async () => {
@@ -85,219 +52,322 @@ export const movieInfo = async (title) => {
   return result.results;
 };
 
-export const EgyptianMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_origin_country: "EG",
-      language: "ar-EG", // Optional: returns title/overview in Arabic if available
-      sort_by: "popularity.desc",
-    },
-  });
+export const EgyptianMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_origin_country: "EG",
+        language: "ar-EG", // Optional: returns title/overview in Arabic if available
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const koreanMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_original_language: "ko", // Korean movies
-      with_genres: 18,
-      language: "en-US", // Response in English
-      sort_by: "popularity.desc",
-      certification_country: "KR",
-      "certification.lte": "15",
-    },
-  });
+export const koreanMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_original_language: "ko", // Korean movies
+        with_genres: 18,
+        language: "en-US", // Response in English
+        sort_by: "popularity.desc",
+        certification_country: "KR",
+        "certification.lte": "15",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const JapaneseMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_original_language: "ja",
-      // with_genres: 35,
-      language: "en-US",
-      sort_by: "popularity.desc",
-      certification_country: "JP",
-      "certification.lte": "PG12",
-    },
-  });
+export const JapaneseMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_original_language: "ja",
+        // with_genres: 35,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        certification_country: "JP",
+        "certification.lte": "PG12",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const HorrorMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 27,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const HorrorMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 27,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const KomedyMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 35,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const KomedyMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 35,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const AmericanMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_original_language: "en",
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const AmericanMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_original_language: "en",
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const TranGermanMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_original_language: "de",
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const TranGermanMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_original_language: "de",
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const ArabicMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_origin_country: "EG",
-      language: "ar-EG", // Optional: returns title/overview in Arabic if available
-      sort_by: "popularity.desc",
-      page: 2,
-    },
-  });
+export const ArabicMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_origin_country: "EG",
+        language: "ar-EG", // Optional: returns title/overview in Arabic if available
+        sort_by: "popularity.desc",
+        page: page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const InidanMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_original_language: "hi",
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const InidanMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_original_language: "hi",
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const ChineseMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_original_language: "zh",
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const ChineseMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_original_language: "zh",
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const ActionMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 28,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const ActionMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 28,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const RomanceMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 10749,
-      language: "en-US",
-      sort_by: "popularity.desc",
-      page: 4,
-    },
-  });
+export const RomanceMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 10749,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page: page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const ScienceFictionMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 878,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const ScienceFictionMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 878,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const CartoonMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 16,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
-export const WarMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 10752,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const CartoonMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 16,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const DocumentaryMovies = () =>
-  axios.get(`${BASE_URL}/discover/movie`, {
-    params: {
-      api_key: API_KEY,
-      with_genres: 99,
-      language: "en-US",
-      sort_by: "popularity.desc",
-    },
-  });
+export const WarMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 10752,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const SportMovies = () =>
-  axios.get(`${BASE_URL}/search/tv`, {
-    params: {
-      api_key: API_KEY,
-      query: "wwe",
-      language: "en-US",
-    },
-  });
+export const DocumentaryMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: 99,
+        language: "en-US",
+        sort_by: "popularity.desc",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const ProgramMovies = () =>
-  axios.get(`${BASE_URL}/discover/tv`, {
-    params: {
-      api_key: API_KEY,
-      sort_by: "popularity.desc",
-      language: "en-US",
-    },
-  });
+export const SportMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/search/tv`, {
+      params: {
+        api_key: API_KEY,
+        query: "wwe",
+        language: "en-US",
+        page: page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const StageMovies = () =>
-  axios.get(`${BASE_URL}/search/movie`, {
-    params: {
-      api_key: API_KEY,
-      query: "shakespeare",
-      language: "en-US",
-    },
-  });
+export const ProgramMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/discover/tv`, {
+      params: {
+        api_key: API_KEY,
+        sort_by: "popularity.desc",
+        language: "en-US",
+        page: page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const LibraryMovies = () =>
-  axios.get(`${BASE_URL}/search/movie`, {
-    params: {
-      api_key: API_KEY,
-      query: "librarian",
-      language: "en-US",
-    },
-  });
+export const StageMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: "shakespeare",
+        language: "en-US",
+        page: page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
-export const AnimeMovies = () =>
-  axios.get("https://api.themoviedb.org/3/discover/tv", {
-    params: {
-      api_key: API_KEY,
-      with_genres: 16,
-      with_original_language: "ja",
-      sort_by: "popularity.desc",
-      page: 1,
-    },
-  });
+export const LibraryMovies = (page) =>
+  axios
+    .get(`${BASE_URL}/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: "librarian",
+        language: "en-US",
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
+
+export const AnimeMovies = (page) =>
+  axios
+    .get("https://api.themoviedb.org/3/discover/tv", {
+      params: {
+        api_key: API_KEY,
+        with_genres: 16,
+        with_original_language: "ja",
+        sort_by: "popularity.desc",
+        page: page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 
 export const getTrailer = async (movieId, type) => {
   const res = await axios.get(`${BASE_URL}/${type}/${movieId}/videos`, {

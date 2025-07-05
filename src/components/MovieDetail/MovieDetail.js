@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Fragment } from "react";
 import styles from "./MovieDetail.module.scss";
 import { useNavigate } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
@@ -35,36 +35,40 @@ function MovieDetail({ movies, color }) {
   };
 
   return (
-    <div className={styles.container} style={{ backgroundColor: color }}>
-      {movies?.map((movie, i) => (
-        <div
-          className={styles.inner}
-          key={i}
-          onClick={() => {
-            const type = movie.name || movie.title;
-            detailHandler(type?.split(" ").join("-"));
-          }}
-        >
-          <div className={styles.content}>
-            <div className={styles.quality}>
-              <StateType type={selectColor(movie?.vote_average)} />
-            </div>
+    <Fragment>
+      <div className={styles.container} style={{ backgroundColor: color }}>
+        {movies?.map((movie, i) => (
+          <div
+            className={styles.inner}
+            key={i}
+            onClick={() => {
+              const type = movie.name || movie.title;
+              detailHandler(type?.split(" ").join("-"));
+            }}
+          >
+            <div className={styles.content}>
+              <div className={styles.quality}>
+                <StateType type={selectColor(movie?.vote_average)} />
+              </div>
 
-            <div className={styles.star}>
-              <span>{vote(movie?.vote_average)}</span>
-              <StarIcon className={styles.real} />
+              <div className={styles.star}>
+                <span>{vote(movie?.vote_average)}</span>
+                <StarIcon className={styles.real} />
+              </div>
+            </div>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+            />
+            <div>
+              {cutTitleHandler(
+                movie.title ? movie?.original_title : movie?.original_name
+              )}
+              <p>{real(movie?.release_date || movie?.first_air_date)}</p>
             </div>
           </div>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} />
-          <div>
-            {cutTitleHandler(
-              movie.title ? movie?.original_title : movie?.original_name
-            )}
-            <p>{real(movie?.release_date || movie?.first_air_date)}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Fragment>
   );
 }
 
