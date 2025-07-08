@@ -24,42 +24,42 @@ const Trending = () => {
   );
 
   useEffect(() => {
-    async function egyApi() {
-      switch (title) {
-        case headTrends[0].title:
-          dispatch(
-            fetchCategoryData({ category: category, time: "day", page: 1 })
-          );
-          break;
-        case headTrends[1].title:
-          dispatch(
-            fetchCategoryData({ category: category, time: "week", page: 1 })
-          );
-          break;
-        case headTrends[2].title:
-          dispatch(
-            fetchCategoryData({ category: category, time: "day", page: 1 })
-          );
-          break;
-        case headTrends[3].title:
-          dispatch(
-            fetchCategoryData({ category: category, time: "week", page: 1 })
-          );
-          break;
-        default:
-          dispatch(
-            fetchCategoryData({ category: category, time: "day", page: 1 })
-          );
-          break;
-      }
+    switch (title) {
+      case headTrends[0].title:
+        dispatch(
+          fetchCategoryData({ category: category, time: "day", page: 1 })
+        );
+        break;
+      case headTrends[1].title:
+        dispatch(
+          fetchCategoryData({ category: category, time: "week", page: 1 })
+        );
+        break;
+      case headTrends[2].title:
+        dispatch(
+          fetchCategoryData({ category: category, time: "day", page: 1 })
+        );
+        break;
+      case headTrends[3].title:
+        dispatch(
+          fetchCategoryData({ category: category, time: "week", page: 1 })
+        );
+        break;
+      default:
+        dispatch(
+          fetchCategoryData({ category: category, time: "day", page: 1 })
+        );
+        break;
     }
-    egyApi();
   }, [title, dispatch]);
 
-  // console.log("From trend", title, trend);
   return (
     <CenterialContainer>
-      <div className={styles.container}>
+      <div
+        className={`${styles.container} ${
+          !loading ? styles["hide-after"] : ""
+        }`}
+      >
         <div className={styles.head}>
           <div className={styles.content}>
             {headTrends.map((item) => (
@@ -77,18 +77,13 @@ const Trending = () => {
         </div>
         <hr />
 
-        {loading ? (
-          <div className={styles.spinnerContainer}>
-            <div className="spinner">
-              <MetroSpinner size={40} color="green" loading={loading} />
-            </div>
+        <div className={styles.spinnerContainer}>
+          <div className="spinner">
+            <MetroSpinner size={80} color="green" loading={loading} />
           </div>
-        ) : (
-          <>
-            <MovieDetail movies={data?.results} />
-            <Pagination category={category} totalPages={totalPages} />
-          </>
-        )}
+        </div>
+        <MovieDetail movies={data?.results} />
+        <Pagination category={category} totalPages={totalPages} />
       </div>
       <Categories position="relative" ActiveWidth={true} full={true} />
     </CenterialContainer>

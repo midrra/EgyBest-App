@@ -2,4 +2,6 @@ select {
   // color: red;
   border: none;
   border-radius: $radius;
+  overflow-y: auto;
+  max-height: 50px;
 }

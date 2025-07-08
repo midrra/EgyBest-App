@@ -13,13 +13,7 @@ function Stage() {
 
   return (
     <div>
-      <FetchMovies
-        getMovies={StageMovies}
-        title="المسرح"
-        totalPages={15}
-        page={1}
-        category="stage"
-      />
+      <FetchMovies getMovies={StageMovies} title="المسرح" category="stage" />
     </div>
   );
 }

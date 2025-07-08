@@ -3,13 +3,12 @@
 .container {
   position: absolute;
   top: 70px;
-  right: 180px;
+  right: 210px;
+  width: 50%;
 
   & {
-    @include large {
-      right: 105px;
-    }
     @include desktop {
+      width: auto;
       right: 243px;
     }
     @include tablet {

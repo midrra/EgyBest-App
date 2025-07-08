@@ -48,7 +48,11 @@ const MovieTitle = () => {
         <MetroSpinner size={80} color="green" loading={loading} />
       </div>
       <div className={styles.container}>
-        <div className={styles["content-part"]}>
+        <div
+          className={`${styles["content-part"]} ${
+            !loading ? styles["hide-after"] : ""
+          }`}
+        >
           <div className={styles.innerContent}>
             <div className={styles.booster}>
               <div className={styles.image}>

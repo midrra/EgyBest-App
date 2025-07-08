@@ -18,68 +18,59 @@ export const MovieCatData = [
   },
   {
     id: 4,
-    title: "الاكثر شهره",
+    title: "افلام قادمة",
     log: <SellIcon />,
   },
 ];
 
-export const years = [
-  { year: "السنه" },
-  { year: "2022" },
-  { year: "2021" },
-  { year: "2020" },
-  { year: "2019" },
-  { year: "2013" },
-];
+export const years = Array.from({ length: 70 }, (_, i) => {
+  const y = 2026 - i;
+  const year = y.toString() === "2026" ? "العام" : y.toString();
+  return {
+    label: year,
+    value: y.toString(),
+  };
+});
 
 export const language = [
-  { language: "اللغه" },
-  { language: "en" },
-  { language: "ja" },
-  { language: "ko" },
-  { language: "الفرنسيه" },
-  { language: "البرتغاليه" },
-  { language: "الارجنتينيه" },
+  { label: "اللغة", value: "" },
+  { label: "الانجليزية", value: "en" },
+  { label: "اليابانية", value: "ja" },
+  { label: "الكورية", value: "ko" },
+  { label: "العربية", value: "ar" },
+  { label: "الصينية", value: "zh" },
+  { label: "الاسبانية", value: "es" },
+  { label: "الهندية", value: "hi" },
+  { label: "الالمانية", value: "de" },
+  { label: "التركية", value: "tr" },
+  { label: "الايطالية", value: "it" },
 ];
 
 export const country = [
-  { country: "البلد" },
-  { country: "MX" },
-  { country: "US" },
-  { country: "JP" },
-  { country: "السودان" },
-  { country: "مصر" },
-  { country: "الولايات المتحده" },
-  { country: "المملكه المتحده" },
-  { country: "البرازيل" },
+  { label: "البلد", value: "" },
+  { label: "امريكا", value: "en" },
+  { label: "اليابان", value: "ja" },
+  { label: "كوريا", value: "ko" },
+  { label: "مصر", value: "ar" },
+  { label: "اسبانيا", value: "es" },
+  { label: "البرتغال", value: "pt" },
+  { label: "الهند", value: "hi" },
+  { label: "الصين", value: "zh" },
+  { label: "تركيا", value: "tr" },
+  { label: "ايطاليا", value: "it" },
 ];
 
 export const sort = [
-  { type: "النوع" },
-  { type: "tv" },
-  { type: "movie" },
-  { type: "مغامره" },
-  { type: "خيال" },
-  { type: "فانتازيا" },
-];
-
-export const quality = [
-  { quality: "الدقه" },
-  { quality: "2022" },
-  { quality: "2021" },
-  { quality: "2020}" },
-  { quality: "2019" },
-  { quality: "2018" },
-];
-
-export const translation = [
-  { translation: "الترجمه" },
-  { translation: "العربيه" },
-  { translation: "الانجليزيه" },
-  { translation: "الفرنيسه" },
-  { translation: "البرتقاليه" },
-  { translation: "الارجنتينيه" },
-  { translation: "السوريه" },
-  { translation: "السودانيه" },
-  { translation: "المصريه" },
+  { label: "النوع" },
+  { label: "اكشن", value: "28" },
+  { label: "مغامرة", value: "12" },
+  { label: " عائلة", value: "10751" },
+  { label: "رسوم متحركة", value: "16" },
+  { label: "مغامرة", value: "12" },
+  { label: "كوميديا", value: "35" },
+  { label: "جريمة", value: "80" },
+  { label: "دراما", value: "18" },
+  { label: "حرب", value: "10752" },
+  { label: "رومانسية", value: "10749" },
+  { label: "غموض", value: "9648" },
 ];

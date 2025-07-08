@@ -12,15 +12,37 @@
 .container {
   padding: 10px 0px;
   background-color: #fff;
-  height: 100%;
+  height: 620vh;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -95px;
+    left: 0;
+    width: 97%;
+    height: 104%;
+    background-color: #fff;
+    z-index: 1000;
+    margin: 0 8px;
+  }
+
+  &.hide-after::after {
+    display: none;
+  }
 
   .spinnerContainer {
-    opacity: 0.6;
-    position: absolute;
-    top: 64px;
-    right: 50%;
+    position: fixed;
+    top: 50%;
+    left: 55%;
     transform: translate(-50%, 50%);
-    height: 100%;
+    z-index: 10000;
+
+    @include tablet() {
+      left: 38%;
+    }
+    @include mobile() {
+      left: 50%;
+    }
   }
 
   .head {
@@ -32,7 +54,6 @@
       width: 553px;
       justify-content: space-between;
       cursor: pointer;
-
       .inner {
         @extend %innerContain;
         color: $main-color;

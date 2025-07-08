@@ -14,18 +14,19 @@ function FetchMovies({ title, category }) {
 
   return (
     <CenterialContainer>
-      {loading ? (
-        <div className={loading ? styles.spinner : ""}>
+      <div
+        className={`${styles.container} ${
+          !loading ? styles["hide-after"] : ""
+        }`}
+      >
+        <div className={styles.spinner}>
           <MetroSpinner size={80} color="green" loading={loading} />
         </div>
-      ) : (
-        <>
-          <h1 className="pb-4">{title}</h1>
-          <MovieDetail movies={data.results} />
-          <Pagination category={category} totalPages={totalPages} />
-          <Categories position="relative" ActiveWidth={true} full={true} />
-        </>
-      )}
+        <h1 className="pb-4">{title}</h1>
+        <MovieDetail movies={data.results} />
+        <Pagination category={category} totalPages={totalPages} />
+        <Categories position="relative" ActiveWidth={true} full={true} />
+      </div>
     </CenterialContainer>
   );
 }

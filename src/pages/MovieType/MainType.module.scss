@@ -1,33 +1,75 @@
 @import "../../globalStyle/globalStyle.scss";
-.content {
-  display: flex;
-  justify-content: center;
-  background-color: #fff;
-  height: 55px;
 
-  .category {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 74%;
+.container {
+  background-color: #fff;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -95px;
+    left: 0;
+    width: 97%;
+    height: 104%;
+    background-color: #fff;
+    z-index: 1000;
+    margin: 0 8px;
   }
-}
 
-.selectContainer {
-  background-color: #fff;
+  &.hide-after::after {
+    display: none;
+  }
 
-  .selectInner {
-    width: 100%;
+  .spinner {
+    position: fixed;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, 50%);
+    z-index: 10000;
+
+    @include tablet() {
+      left: 38%;
+    }
+    @include mobile() {
+      left: 50%;
+    }
+  }
+
+  .content {
     display: flex;
-    justify-content: space-between;
-    padding: 0 20px 0 38px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+    justify-content: center;
+    background-color: #fff;
 
-    select {
-      border-radius: 2px;
-      margin-bottom: 10px;
-      width: 100px;
+    .category {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 84%;
+      padding: 15px;
+
+      @include desktop {
+        width: 100%;
+        gap: 10px;
+      }
+    }
+  }
+
+  .selectContainer {
+    background-color: #fff;
+
+    .selectInner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px 0 38px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+
+      select {
+        border-radius: 2px;
+        margin-bottom: 10px;
+        width: 100px;
+      }
     }
   }
 }

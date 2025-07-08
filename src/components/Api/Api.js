@@ -1,15 +1,8 @@
 import axios from "axios";
+import { country } from "../../pages/MovieType/MovieCatData";
 
 const API_KEY = "88170d99a195633ba877280a25be1735";
 const BASE_URL = "https://api.themoviedb.org/3";
-
-export const topRated = async () => {
-  const respond = await fetch(
-    `https://api.themoviedb.org/3/tv/top_rated?api_key=88170d99a195633ba877280a25be1735`
-  );
-  const result = await respond.json();
-  return result.results;
-};
 
 export const trendingApi = async (page, time) => {
   const respond = await fetch(
@@ -19,38 +12,60 @@ export const trendingApi = async (page, time) => {
   return result;
 };
 
-export const moviesApi = async () => {
-  const url =
-    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODE3MGQ5OWExOTU2MzNiYTg3NzI4MGEyNWJlMTczNSIsIm5iZiI6MTcyOTA0MjkzNS44NDc5NzgsInN1YiI6IjYyYTRjZDIxMjU1ZGJhMDA0ZjJlYzU0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AnopcZYx11P40-dJ2H15rv1Ox9TqJgol04GCEnY2wkk",
-    },
-  };
-  const respond = await fetch(url, options);
-  const result = await respond.json();
-  return result.results;
-};
-
+//MoveTitle
 export const movieInfo = async (title) => {
-  const url = `https://api.themoviedb.org/3/search/multi?query=${title}&include_adult=false&page=1`;
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODE3MGQ5OWExOTU2MzNiYTg3NzI4MGEyNWJlMTczNSIsIm5iZiI6MTcyOTIzODM4NS41MjE0MzcsInN1YiI6IjYyYTRjZDIxMjU1ZGJhMDA0ZjJlYzU0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2WedLbIBZKdzAbEpN3AsBPKM9Iszcm8zbdYwjcpmt9U",
-    },
-  };
+  const url = `https://api.themoviedb.org/3/search/multi?query=${title}&include_adult=false&page=1&language=en-US&api_key=${API_KEY}`;
 
-  fetch(url, options);
-  const respond = await fetch(url, options);
+  const respond = await fetch(url);
   const result = await respond.json();
   return result.results;
 };
+
+//Moves section
+
+export const moviesApi = async (page, type, lang, year, country) =>
+  axios
+    .get(`${BASE_URL}/discover/movie`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: type,
+        with_original_language: lang,
+        sort_by: "popularity.desc",
+        primary_release_year: year,
+        language: country,
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
+
+export const nowPlaying = async (page) =>
+  axios
+    .get(
+      `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}&region=US`
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+export const TopRated = async (page) =>
+  axios
+    .get(
+      `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+export const UpcomingMovies = async (page) =>
+  axios
+    .get(
+      `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
+    )
+    .then((response) => {
+      return response.data;
+    });
 
 export const EgyptianMovies = (page) =>
   axios

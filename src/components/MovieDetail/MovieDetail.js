@@ -7,7 +7,7 @@ import StateType from "../StateType/StateType";
 function MovieDetail({ movies, color }) {
   const navigate = useNavigate();
 
-  const vote = (v) => v.toFixed(1);
+  const vote = (v) => v?.toFixed(1);
   const real = (date) => date?.slice(0, 4);
 
   const cutTitleHandler = (t) => {

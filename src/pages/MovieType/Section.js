@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Section = ({ data, sort, setFilters }) => {
+const Section = ({ data, label, setFilters, filters }) => {
   const selectHandler = (e) => {
-    setFilters((prev) => ({ ...prev, [sort]: e.target.value }));
+    setFilters((prev) => ({ ...prev, [label]: e.target.value }));
   };
 
   return (
-    <select onChange={selectHandler}>
+    <select onChange={selectHandler} value={filters[label] || ""}>
       {data.map((item, i) => (
-        <option key={i}>{item[sort]}</option>
+        <option key={i} value={item.value}>
+          {item.label}
+        </option>
       ))}
     </select>
   );
