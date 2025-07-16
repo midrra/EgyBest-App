@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MainType.module.scss";
 import Section from "./Section.js";
-import { years, language, sort, country } from "./MovieCatData.js";
 import CenterialContainer from "../../components/CenteralContainer/CenteralContainer.js";
 import Categories from "../../components/Categories/Categories.js";
 import Pagination from "../../components/Pagination/Pagination.js";
@@ -10,13 +9,25 @@ import { fetchMovies } from "../../ContextData/MoviesSlice.js";
 import MovieDetail from "../../components/MovieDetail/MovieDetail.js";
 import SelectionBar from "./SelectionBar.js";
 import { MetroSpinner } from "react-spinners-kit";
+import { titleToCategory } from "../../utils/TitleToCategory.js";
 
-function MainType() {
+function MainType({
+  title1,
+  title2,
+  title3,
+  title4,
+  selectData,
+  mediaType,
+  years,
+  language,
+  sort,
+  country,
+}) {
   const dispatch = useDispatch();
   const [isFiltering, setIsFiltering] = useState(false);
   const [active, setActive] = useState(1);
   const [hover, setHover] = useState(1);
-  const [title, setTitle] = useState("افلام");
+  const [title, setTitle] = useState(title4);
   const [filters, setFilters] = useState({
     year: "",
     language: "",
@@ -26,30 +37,23 @@ function MainType() {
     translation: "",
   });
 
-  const titleToCategory = (title) => {
-    switch (title) {
-      case "احدث الاضافات":
-        return "nowPlaying";
-      case "افضل الافلام":
-        return "topRated";
-      case "افلام قادمة":
-        return "upcoming";
-      case "افلام":
-      default:
-        return "movies";
-    }
-  };
-
-  const category = titleToCategory(title);
+  const category = titleToCategory(
+    title,
+    mediaType,
+    title1,
+    title2,
+    title3,
+    title4
+  );
 
   const movieData = useSelector((state) => {
     return isFiltering
-      ? state.movieChoose["movies"]
+      ? state.movieChoose[mediaType]
       : state.movieChoose[category];
   });
   const { data, totalPages, loading } = movieData;
 
-  useEffect(() => {
+  const resetFilters = () => {
     setFilters({
       year: "",
       language: "",
@@ -58,8 +62,11 @@ function MainType() {
       country: "",
       translation: "",
     });
+  };
 
-    dispatch(fetchMovies({ category: category, page: 1 }));
+  useEffect(() => {
+    resetFilters();
+    dispatch(fetchMovies({ category, page: 1 }));
   }, [title, dispatch]);
 
   useEffect(() => {
@@ -69,7 +76,7 @@ function MainType() {
     if (active) {
       dispatch(
         fetchMovies({
-          category: "movies",
+          category: mediaType,
           type: filters.type,
           lang: filters.language,
           year: filters.year,
@@ -96,6 +103,7 @@ function MainType() {
           hover={hover}
           active={active}
           setTitle={setTitle}
+          selectData={selectData}
         />
         <div className={styles.selectContainer}>
           <div className={styles.selectInner}>
@@ -126,13 +134,13 @@ function MainType() {
           </div>
           <MovieDetail movies={data.results} />
           <Pagination
-            category={isFiltering ? "movies" : category}
+            category={isFiltering ? mediaType : category}
             totalPages={totalPages}
             filters={filters}
           />
         </div>
-        <Categories position="relative" ActiveWidth={true} full={true} />
       </div>
+      <Categories position="relative" ActiveWidth={true} full={true} />
     </CenterialContainer>
   );
 }

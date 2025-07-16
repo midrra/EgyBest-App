@@ -22,7 +22,6 @@ export const movieInfo = async (title) => {
 };
 
 //Moves section
-
 export const moviesApi = async (page, type, lang, year, country) =>
   axios
     .get(`${BASE_URL}/discover/movie`, {
@@ -40,10 +39,36 @@ export const moviesApi = async (page, type, lang, year, country) =>
       return response.data;
     });
 
+export const SeriesApi = async (page, type, lang, year, country) =>
+  axios
+    .get(`${BASE_URL}/discover/tv`, {
+      params: {
+        api_key: API_KEY,
+        with_genres: type,
+        with_original_language: lang,
+        sort_by: "popularity.desc",
+        first_air_date_year: year,
+        language: country,
+        page,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
+
 export const nowPlaying = async (page) =>
   axios
     .get(
       `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}&region=US`
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+export const NowPlayingSeries = async (page) =>
+  axios
+    .get(
+      `${BASE_URL}/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=${page}&region=US`
     )
     .then((response) => {
       return response.data;
@@ -58,10 +83,28 @@ export const TopRated = async (page) =>
       return response.data;
     });
 
+export const TopRatedSeries = async (page) =>
+  axios
+    .get(
+      `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
+    )
+    .then((response) => {
+      return response.data;
+    });
+
 export const UpcomingMovies = async (page) =>
   axios
     .get(
       `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
+    )
+    .then((response) => {
+      return response.data;
+    });
+
+export const AiringTodaySeries = async (page) =>
+  axios
+    .get(
+      `${BASE_URL}/tv/airing_today?api_key=${API_KEY}&language=en-US&page=${page}`
     )
     .then((response) => {
       return response.data;
@@ -163,14 +206,15 @@ export const AmericanMovies = (page) =>
       return response.data;
     });
 
-export const TranGermanMovies = (page) =>
+export const Crime = (page) =>
   axios
     .get(`${BASE_URL}/discover/movie`, {
       params: {
         api_key: API_KEY,
-        with_original_language: "de",
+        with_genres: 80,
         language: "en-US",
         sort_by: "popularity.desc",
+        include_adult: false,
         page,
       },
     })
@@ -215,6 +259,9 @@ export const ChineseMovies = (page) =>
         api_key: API_KEY,
         with_original_language: "zh",
         language: "en-US",
+        include_adult: false,
+        certification_country: "US",
+        "certification.lte": "PG-13",
         sort_by: "popularity.desc",
         page,
       },
@@ -238,12 +285,12 @@ export const ActionMovies = (page) =>
       return response.data;
     });
 
-export const RomanceMovies = (page) =>
+export const MysteryMovies = (page) =>
   axios
     .get(`${BASE_URL}/discover/movie`, {
       params: {
         api_key: API_KEY,
-        with_genres: 10749,
+        with_genres: 9648,
         language: "en-US",
         sort_by: "popularity.desc",
         page: page,
@@ -298,20 +345,52 @@ export const WarMovies = (page) =>
       return response.data;
     });
 
-export const DocumentaryMovies = (page) =>
-  axios
-    .get(`${BASE_URL}/discover/movie`, {
+//
+export const DocumentaryMovies = async (page) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/discover/movie`, {
       params: {
         api_key: API_KEY,
         with_genres: 99,
         language: "en-US",
         sort_by: "popularity.desc",
+        include_adult: false,
+        certification_country: "US",
+        "certification.lte": "PG-13",
         page,
       },
-    })
-    .then((response) => {
-      return response.data;
     });
+
+    const filtered = response.data.results.filter((movie) => {
+      const title = movie.title?.toLowerCase() || "";
+      const overview = movie.overview?.toLowerCase() || "";
+
+      // Add your own list of keywords
+      const blockedWords = [
+        "porn",
+        "erotic",
+        "xxx",
+        "sex",
+        "sensual",
+        "nude",
+        "strip",
+        "fetish",
+      ];
+
+      return !blockedWords.some(
+        (word) => title.includes(word) || overview.includes(word)
+      );
+    });
+
+    return {
+      ...response.data,
+      results: filtered,
+    };
+  } catch (error) {
+    console.error("Failed to fetch Documentary Movies:", error);
+    return { results: [], total_pages: 0 };
+  }
+};
 
 export const SportMovies = (page) =>
   axios

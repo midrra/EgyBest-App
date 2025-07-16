@@ -1,13 +1,12 @@
 import React from "react";
 import Select from "./Select";
-import { MovieCatData } from "./MovieCatData";
 import styles from "./MainType.module.scss";
 
-function SelectionBar({ setActive, active, setTitle }) {
+function SelectionBar({ setActive, active, setTitle, selectData }) {
   return (
     <div className={styles.content}>
       <div className={styles.category}>
-        {MovieCatData.map((item) => (
+        {selectData.map((item) => (
           <Select
             key={item.id}
             setActive={setActive}

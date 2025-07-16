@@ -3,7 +3,7 @@
 .container {
   position: relative;
   width: 100%;
-  height: 620vh;
+  // height: 620vh;
 
   &::after {
     content: "";
@@ -13,7 +13,7 @@
     background-color: #fff;
     width: 100%;
     height: 104%;
-    z-index: 1000;
+    z-index: 10000;
   }
 
   &.hide-after::after {

@@ -11,8 +11,8 @@
     width: 97%;
     height: 104%;
     background-color: #fff;
-    z-index: 1000;
     margin: 0 8px;
+    z-index: 10000;
   }
 
   &.hide-after::after {
@@ -24,7 +24,7 @@
     top: 50%;
     left: 55%;
     transform: translate(-50%, 50%);
-    z-index: 10000;
+    z-index: 10001;
 
     @include tablet() {
       left: 38%;
@@ -44,7 +44,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      width: 84%;
+      width: 100%;
       padding: 15px;
 
       @include desktop {

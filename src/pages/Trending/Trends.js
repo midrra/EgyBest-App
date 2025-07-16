@@ -75,7 +75,7 @@ const Trending = () => {
             ))}
           </div>
         </div>
-        <hr />
+        <hr className={styles.line} />
 
         <div className={styles.spinnerContainer}>
           <div className="spinner">

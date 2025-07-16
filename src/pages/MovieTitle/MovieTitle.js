@@ -9,6 +9,9 @@ import Categories from "../../components/Categories/Categories";
 import Trailer from "./Trailer";
 import CenterialContainer from "../../components/CenteralContainer/CenteralContainer";
 
+import { useAuth } from "../../ContextData/Auth";
+// import Alert from "../../utils/Alert";
+// import { Alert } from "bootstrap";
 const MovieTitle = () => {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,6 +19,7 @@ const MovieTitle = () => {
   const [mediaType, setMediaType] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
     async function detail() {
@@ -40,7 +44,6 @@ const MovieTitle = () => {
     }
     detail();
   }, [id, navigate]);
-  console.log("The name of ", movieId);
 
   return (
     <CenterialContainer>
@@ -62,7 +65,22 @@ const MovieTitle = () => {
                   }`}
                 />
               </div>
-              <button>
+              <button
+                // disabled={!user}
+                onClick={() => {
+                  if (!user) {
+                    navigate("/login");
+                    // <Alert
+                    //   style={{ zIndex: 50000, position: "relative" }}
+                    //   variant="danger"
+                    //   message="يجب تسجيل الدخول لمشاهدة أو تحميل الفيلم"
+                    // />;
+                    // <Alert />;
+                  } else {
+                    navigate("/download");
+                  }
+                }}
+              >
                 <span>
                   <SellIcon className={styles.icon} />
                 </span>
@@ -91,6 +109,7 @@ const MovieTitle = () => {
               </div>
             </div>
           </div>
+
           <div className={styles.notes}>
             <p>
               <span>

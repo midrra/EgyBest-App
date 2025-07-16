@@ -41,7 +41,7 @@ export const CategoryData = [
   },
   {
     id: 11,
-    type: "افلام رومانسية",
+    type: "افلام غموض",
   },
   {
     id: 12,

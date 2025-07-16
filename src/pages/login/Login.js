@@ -42,7 +42,15 @@ function Login() {
           // Signed in
           const user = userCredential.user;
           console.log("User signed in:", user);
-          navigate("/");
+
+          user.reload().then(() => {
+            if (user.emailVerified) {
+              navigate("/");
+            } else {
+              alert("Please verify your email before logging in.");
+              auth.signOut();
+            }
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -113,6 +121,7 @@ function Login() {
               />
             </div>
             <p className={styles.errPa}>{errors.password}</p>
+            <Link to="/password-reset">forgit your password</Link>
             <button onClick={loginHandler}>Login</button>
             <div className={styles.account}>
               <Link

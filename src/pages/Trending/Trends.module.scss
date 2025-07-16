@@ -12,7 +12,7 @@
 .container {
   padding: 10px 0px;
   background-color: #fff;
-  height: 620vh;
+  // height: 620vh;
 
   &::after {
     content: "";
@@ -22,27 +22,12 @@
     width: 97%;
     height: 104%;
     background-color: #fff;
-    z-index: 1000;
     margin: 0 8px;
+    z-index: 10000;
   }
 
   &.hide-after::after {
     display: none;
-  }
-
-  .spinnerContainer {
-    position: fixed;
-    top: 50%;
-    left: 55%;
-    transform: translate(-50%, 50%);
-    z-index: 10000;
-
-    @include tablet() {
-      left: 38%;
-    }
-    @include mobile() {
-      left: 50%;
-    }
   }
 
   .head {
@@ -50,10 +35,14 @@
     justify-content: center;
 
     .content {
+      width: 100%;
       display: flex;
-      width: 553px;
       justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0 20px;
       cursor: pointer;
+      gap: 15px;
+
       .inner {
         @extend %innerContain;
         color: $main-color;
@@ -66,6 +55,10 @@
           left: 0;
           bottom: -18px;
           background-color: $main-color;
+
+          @include desktop {
+            bottom: -7px;
+          }
         }
       }
 
@@ -73,5 +66,26 @@
         @extend %innerContain;
       }
     }
+  }
+}
+
+.line {
+  @include desktop {
+    margin-top: 5px;
+  }
+}
+
+.spinnerContainer {
+  position: fixed;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, 50%);
+  z-index: 10001;
+
+  @include tablet() {
+    left: 38%;
+  }
+  @include mobile() {
+    left: 50%;
   }
 }

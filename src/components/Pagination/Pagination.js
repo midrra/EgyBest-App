@@ -8,10 +8,16 @@ import { fetchMovies } from "../../ContextData/MoviesSlice";
 export default function PaginationRounded({ category, totalPages, filters }) {
   const dispatch = useDispatch();
 
-  const isBasicMovieCategory = ["nowPlaying", "topRated", "upcoming"].includes(
-    category
-  );
-  const isFilteredMovies = category === "movies";
+  const isBasicMovieCategory = [
+    "nowPlaying",
+    "topRated",
+    "upcoming",
+    "nowPlayingSeries",
+    "seriesApi",
+    "airingTodaySeries",
+    "topRatedSeries",
+  ].includes(category);
+  const isFilteredMovies = category === "movies" || category === "series";
 
   const containerKey =
     isBasicMovieCategory || isFilteredMovies ? "movieChoose" : "movies";

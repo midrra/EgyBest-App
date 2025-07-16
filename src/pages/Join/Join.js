@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Carousels from "../login/Carousels";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import styles from "./Join.module.scss";
 
 function Join() {
@@ -39,8 +43,21 @@ function Join() {
                 .then((userCredential) => {
                   // Signed up
                   const user = userCredential.user;
-                  console.log("User signed up:", userCredential);
-                  navigate("/");
+                  console.log("User signed up:", userCredential.user.email);
+                  // ✅ Send email verification
+                  sendEmailVerification(user)
+                    .then((user) => {
+                      alert(
+                        "Verification email sent. Please check your inbox."
+                      );
+                      navigate("/login");
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "Error sending verification email:",
+                        error.message
+                      );
+                    });
                 })
                 .catch((error) => {
                   const errorCode = error.code;

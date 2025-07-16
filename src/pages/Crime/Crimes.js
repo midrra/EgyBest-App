@@ -1,25 +1,21 @@
 import React, { useEffect } from "react";
 import FetchMovies from "../../components/FetchMovies/FetchMovies";
-import { RomanceMovies } from "../../components/Api/Api";
+import { Crime } from "../../components/Api/Api";
 import { useDispatch } from "react-redux";
 import { fetchCategoryData } from "../../ContextData/Page";
 
-const Romance = () => {
+function Crimes() {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(fetchCategoryData({ category: "romance", page: 1 }));
+    dispatch(fetchCategoryData({ category: "crime", page: 1 }));
   }, [dispatch]);
 
+  console.log("thsi crime is working fine");
   return (
     <div>
-      <FetchMovies
-        getMovies={RomanceMovies}
-        title="افلام رومانسية"
-        category="romance"
-      />
+      <FetchMovies getMovies={Crime} title="افلام جريمة" category="crime" />
     </div>
   );
-};
+}
 
-export default Romance;
+export default Crimes;

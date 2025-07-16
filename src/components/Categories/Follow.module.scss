@@ -20,7 +20,6 @@
   text-align: center;
   margin: 5px;
   width: 298px;
-  height: 138px;
   padding: 10px 0;
   background: #fff;
   border-radius: $radius;
@@ -75,6 +74,10 @@
       justify-content: center;
       margin-top: 15px;
       gap: 18px;
+
+      @include Extramobile {
+        flex-wrap: wrap;
+      }
 
       .fol-fa {
         margin-bottom: 0;

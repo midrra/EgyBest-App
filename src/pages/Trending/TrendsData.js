@@ -4,6 +4,7 @@ export const headTrends = [
   {
     id: 1,
     title: "الافلام الاكثر مشاهده",
+    logo: <SellIcon />,
   },
   // {
   //   id: 2,

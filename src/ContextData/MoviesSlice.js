@@ -4,6 +4,10 @@ import {
   nowPlaying,
   TopRated,
   UpcomingMovies,
+  TopRatedSeries,
+  NowPlayingSeries,
+  AiringTodaySeries,
+  SeriesApi,
 } from "../components/Api/Api";
 
 // Map endpoints to categories
@@ -12,6 +16,10 @@ const endpointMap = {
   nowPlaying: nowPlaying,
   topRated: TopRated,
   upcoming: UpcomingMovies,
+  topRatedSeries: TopRatedSeries,
+  nowPlayingSeries: NowPlayingSeries,
+  airingTodaySeries: AiringTodaySeries,
+  series: SeriesApi,
 };
 
 // 🔄 Async thunk
@@ -24,7 +32,7 @@ export const fetchMovies = createAsyncThunk(
     try {
       const endpoint = endpointMap[category];
       const data = await endpoint(page, type, lang, year, country);
-      // console.log(data, "from MovieSlice");
+      console.log(data, "from MovieSlice");
       return {
         category,
         page,
@@ -43,6 +51,10 @@ const initialState = {
   nowPlaying: { data: {}, page: 1, totalPages: 1, loading: false },
   topRated: { data: {}, page: 1, totalPages: 1, loading: false },
   upcoming: { data: {}, page: 1, totalPages: 1, loading: false },
+  topRatedSeries: { data: {}, page: 1, totalPages: 1, loading: false },
+  nowPlayingSeries: { data: {}, page: 1, totalPages: 1, loading: false },
+  airingTodaySeries: { data: {}, page: 1, totalPages: 1, loading: false },
+  series: { data: {}, page: 1, totalPages: 1, loading: false },
 };
 
 //  Slice
